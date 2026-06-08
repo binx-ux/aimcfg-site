@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>aim.cfg — ex.cs:go.ex v7</title>
+<meta name="description" content="aim.cfg — a Roblox hub script. aimbot, ESP, silent aim, triggerbot, movement. made by kyn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- backdrop layers -->
+<div class="bg-grid"></div>
+<div class="bg-scan"></div>
+<div class="bg-glow"></div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <span class="brand-mark">+</span>
+    <span class="brand-name">aim<span class="dot">.</span>cfg</span>
+  </a>
+  <nav class="nav-links">
+    <a href="#top">Home</a>
+    <a href="#features">Features</a>
+    <a href="#games">Games</a>
+    <a href="#executors">Executors</a>
+    <a href="#get">Download</a>
+  </nav>
+  <a class="btn btn-discord" href="https://discord.gg/pjfPGmzbN7" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.5c1.6.4 2.4.9 3.5 1.6a13.6 13.6 0 0 0-10.4 0C9.4 4.4 10.3 4 11.8 3.5L11.6 3A19.8 19.8 0 0 0 6.7 4.4 20.7 20.7 0 0 0 3 18.6 19.9 19.9 0 0 0 9 21.5l.4-.7c-1-.3-1.8-.7-2.6-1.2l.6-.5a14.2 14.2 0 0 0 12.2 0l.6.5c-.8.5-1.7.9-2.6 1.2l.4.7a19.8 19.8 0 0 0 6-2.9 20.6 20.6 0 0 0-3.7-14.2ZM9.3 15.4c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.7 2-1.7 2Zm5.4 0c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.7 2-1.7 2Z"/></svg>
+    Join Discord
+  </a>
+</header>
+
+<!-- hero -->
+<main id="top">
+  <section class="hero">
+    <div class="hero-tag reveal">ex.cs:go.ex <span>// v7</span></div>
+    <h1 class="hero-title reveal">aim<span class="crosshair-dot">.</span>cfg</h1>
+    <p class="hero-sub reveal">a roblox hub script. i make scripts, thats it. if it can be done i prob done it.</p>
+
+    <div class="chips reveal">
+      <span class="chip">aimbot</span>
+      <span class="chip">esp</span>
+      <span class="chip">silent aim</span>
+      <span class="chip">triggerbot</span>
+      <span class="chip">movement</span>
+      <span class="chip">multi-game</span>
+    </div>
+
+    <div class="hero-actions reveal">
+      <a href="#get" class="btn btn-primary">Get Script <span class="arr">→</span></a>
+      <a href="https://github.com/binx-ux/aim.cfg" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub</a>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat"><b data-count="10">0</b><span>executors</span></div>
+      <div class="divider"></div>
+      <div class="stat"><b data-count="2">0</b><span>games</span></div>
+      <div class="divider"></div>
+      <div class="stat"><b data-count="8">0</b><span>themes</span></div>
+      <div class="divider"></div>
+      <div class="stat live"><b><i></i>live</b><span>v7 active</span></div>
+    </div>
+  </section>
+
+  <!-- main panel: get script + latest updates -->
+  <section class="panel-wrap" id="get">
+    <div class="panel reveal">
+      <div class="panel-main">
+        <div class="panel-head">
+          <div class="logo-orb"><span>+</span></div>
+          <div>
+            <h2>aim.cfg <span class="ver">v7</span></h2>
+            <div class="release">// latest release</div>
+          </div>
+        </div>
+
+        <div class="feat-row">
+          <div class="feat">
+            <div class="feat-ico">◎</div>
+            <h3>Aimbot</h3>
+            <p>prediction, FOV, LOS, multi-target</p>
+          </div>
+          <div class="feat">
+            <div class="feat-ico">▣</div>
+            <h3>Full ESP</h3>
+            <p>boxes, chams, skeleton, tracers</p>
+          </div>
+          <div class="feat">
+            <div class="feat-ico">⚡</div>
+            <h3>Movement</h3>
+            <p>fly, noclip, bhop, speed, auto tp</p>
+          </div>
+        </div>
+
+        <div class="loaders">
+          <div class="loader">
+            <div class="loader-label"><span>PC</span> paste into any executor</div>
+            <div class="code">
+              <code id="pc-code">loadstring(game:HttpGet("https://raw.githubusercontent.com/binx-ux/aim.cfg/refs/heads/main/aim.cfg"))()</code>
+              <button class="copy" data-target="pc-code">copy</button>
+            </div>
+          </div>
+          <div class="loader">
+            <div class="loader-label"><span class="warn">MOBILE</span> in testing, may not work</div>
+            <div class="code">
+              <code id="mb-code">loadstring(game:HttpGet("https://raw.githubusercontent.com/binx-ux/aim.cfg/refs/heads/main/aim.cfg.mobile"))()</code>
+              <button class="copy" data-target="mb-code">copy</button>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://github.com/binx-ux/aim.cfg" target="_blank" rel="noopener" class="btn btn-primary big">Download Now <span class="arr">→</span></a>
+      </div>
+
+      <aside class="panel-side">
+        <div class="side-head"><span class="spark">✦</span> Latest Updates</div>
+        <div class="updates" id="updates">
+          <div class="update wip"><i></i>triggerbot rework — keep firing till target dead</div>
+          <div class="update wip"><i></i>silent aim still being worked on</div>
+          <div class="update fix"><i></i>investigating game crashes, be patient</div>
+          <div class="update test"><i></i>mobile build in testing</div>
+          <div class="update"><i></i>added xeno mirror for direct download</div>
+          <div class="update"><i></i>8 themes — csgo, purple, blue, red +more</div>
+          <div class="update"><i></i>offscreen arrows added to esp</div>
+          <div class="update"><i></i>silent aim auto method detection</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- features -->
+  <section class="section" id="features">
+    <div class="sec-label">// everything inside</div>
+    <h2 class="sec-title">Features</h2>
+    <div class="grid">
+      <div class="card reveal"><h3>Aimbot</h3><p>smoothness, prediction, FOV, line of sight checks, multi-target.</p></div>
+      <div class="card reveal"><h3>Silent Aim <span class="badge">WIP</span></h3><p>hookmetamethod + setreadonly support with auto method detection.</p></div>
+      <div class="card reveal"><h3>Triggerbot</h3><p>mouse.Target based, works alongside the aimbot.</p></div>
+      <div class="card reveal"><h3>ESP</h3><p>names, health bar, distance, box, chams, skeleton, tracers, offscreen arrows.</p></div>
+      <div class="card reveal"><h3>Crosshair</h3><p>6 styles with dynamic spread.</p></div>
+      <div class="card reveal"><h3>Radar</h3><p>camera-relative radar.</p></div>
+      <div class="card reveal"><h3>Movement</h3><p>speed, fly, noclip, bhop, auto teleport.</p></div>
+      <div class="card reveal"><h3>Hub Launcher</h3><p>game detection and external script loading.</p></div>
+      <div class="card reveal"><h3>8 Themes</h3><p>csgo, purple, blue, red, green, cyan, midnight, rose.</p></div>
+    </div>
+  </section>
+
+  <!-- games -->
+  <section class="section" id="games">
+    <div class="sec-label">// where it works</div>
+    <h2 class="sec-title">Supported Games</h2>
+    <div class="table reveal">
+      <div class="trow thead"><span>Game</span><span>Mode</span><span>Notes</span></div>
+      <div class="trow"><span>Arsenal</span><span class="tag-in">Built-in</span><span>full esp + aimbot</span></div>
+      <div class="trow"><span>MiscGunTest-X</span><span class="tag-in">Built-in</span><span>visuals off (would crash)</span></div>
+      <div class="trow"><span>Everything else</span><span class="tag-ext">Semi-universal</span><span>aimbot + esp, may vary per game</span></div>
+    </div>
+  </section>
+
+  <!-- executors -->
+  <section class="section" id="executors">
+    <div class="sec-label">// compatibility</div>
+    <h2 class="sec-title">Supported Executors</h2>
+    <div class="exec-grid">
+      <div class="exec reveal"><b>Potassium</b><span class="bar"><i style="--w:99%"></i></span><em>99%</em></div>
+      <div class="exec reveal"><b>Wave</b><span class="bar"><i style="--w:99%"></i></span><em>99%</em></div>
+      <div class="exec reveal"><b>Seliware</b><span class="bar"><i style="--w:99%"></i></span><em>99%</em></div>
+      <div class="exec reveal"><b>Synapse Z</b><span class="bar"><i style="--w:99%"></i></span><em>99%</em></div>
+      <div class="exec reveal"><b>Fluxus</b><span class="bar"><i style="--w:98%"></i></span><em>98%</em></div>
+      <div class="exec reveal"><b>Arceus X</b><span class="bar"><i style="--w:97%"></i></span><em>97%</em></div>
+      <div class="exec reveal"><b>Delta</b><span class="bar"><i style="--w:96%"></i></span><em>96%</em></div>
+      <div class="exec reveal"><b>KRNL</b><span class="bar"><i style="--w:94%"></i></span><em>94%</em></div>
+      <div class="exec reveal"><b>Xeno</b><span class="bar"><i style="--w:84%"></i></span><em>84%</em></div>
+      <div class="exec reveal dead"><b>Solara</b><span class="bar"><i style="--w:6%"></i></span><em>blocked</em></div>
+    </div>
+    <div class="xeno-note reveal">
+      need xeno? <a href="https://github.com/binx-ux/aim.cfg/releases/download/xeno-v1.3.55/Xeno-v1.3.55.exe">direct mirror</a>
+      · <a href="https://www.xeno.now/download" target="_blank" rel="noopener">official site</a>
+      <small>third-party, not made by kyn. antivirus may flag it. download at your own risk.</small>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="brand-name">aim<span class="dot">.</span>cfg</span>
+        <p>ex.cs:go.ex v7 · made by kyn</p>
+      </div>
+      <div class="foot-links">
+        <a href="https://discord.gg/pjfPGmzbN7" target="_blank" rel="noopener">Discord</a>
+        <a href="https://github.com/binx-ux/aim.cfg" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/binx-ux/aim.cfg/wiki" target="_blank" rel="noopener">Wiki</a>
+        <a href="https://guns.lol/kynvyr_" target="_blank" rel="noopener">guns.lol</a>
+      </div>
+    </div>
+    <div class="foot-credits">
+      <span>silent aim original by Averiias, Stefanuk12, xaxa</span>
+      <span>for educational purposes only. use at your own risk.</span>
+    </div>
+  </footer>
+</main>
+
+<div class="toast" id="toast">copied to clipboard</div>
+
+<script src="main.js"></script>
+</body>
+</html>
