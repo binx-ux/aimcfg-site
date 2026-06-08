@@ -292,6 +292,51 @@ main{position:relative;z-index:1}
   .xeno-feats{grid-template-columns:1fr}
 }
 
+/* guns.lol card */
+.gl-card{
+  display:block;max-width:520px;margin:0 auto;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,var(--card),#0b0d11);border:1px solid var(--line);
+  border-radius:20px;transition:transform .3s,border-color .3s,box-shadow .3s;
+  box-shadow:0 24px 60px -28px rgba(0,0,0,.8);
+}
+.gl-card:hover{transform:translateY(-5px);border-color:var(--line2);box-shadow:0 34px 80px -28px rgba(255,107,0,.25)}
+.gl-banner{height:110px;background:
+  radial-gradient(120% 140% at 20% 0%,rgba(255,107,0,.35),transparent 60%),
+  radial-gradient(120% 140% at 90% 10%,rgba(88,101,242,.3),transparent 55%),
+  linear-gradient(180deg,#15171d,#0d0f13);
+  position:relative;}
+.gl-banner::after{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:16px 16px;}
+.gl-body{padding:0 26px 26px;position:relative}
+.gl-avatar{
+  width:92px;height:92px;border-radius:50%;margin-top:-46px;position:relative;
+  border:3px solid #0b0d11;background:#0b0d11;overflow:hidden;
+}
+.gl-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.gl-avatar-fallback{
+  display:none;width:100%;height:100%;place-items:center;
+  font-family:var(--mono);font-weight:800;font-size:40px;color:var(--ember);
+  background:radial-gradient(circle at 35% 30%,#1a1f27,#0a0c10);
+}
+.gl-name{display:flex;align-items:baseline;gap:10px;margin-top:14px;flex-wrap:wrap}
+.gl-name h3{font-size:24px;font-family:var(--mono);letter-spacing:-.5px}
+.gl-handle{font-family:var(--mono);font-size:13px;color:var(--ember)}
+.gl-bio{color:var(--mut);font-size:14px;margin-top:8px}
+.gl-socials{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.gl-chip{font-family:var(--mono);font-size:11.5px;color:var(--mut);border:1px solid var(--line);
+  border-radius:7px;padding:6px 11px;background:rgba(255,255,255,.02);transition:.2s}
+.gl-card:hover .gl-chip{border-color:var(--line2)}
+.gl-cta{
+  margin-top:20px;display:flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--disp);font-weight:700;font-size:14px;color:#160a00;
+  background:linear-gradient(180deg,#ff7d1a,var(--ember));border-radius:11px;padding:13px;
+  box-shadow:0 6px 22px rgba(255,107,0,.25);transition:.2s;
+}
+.gl-cta span{transition:transform .2s}
+.gl-card:hover .gl-cta span{transform:translateX(4px)}
+.gl-note{text-align:center;margin-top:18px;font-family:var(--mono);font-size:12.5px;color:var(--mut2)}
+.gl-note a{color:var(--ember)}
+
 /* footer */
 .footer{border-top:1px solid var(--line);margin-top:50px;padding:46px clamp(16px,5vw,64px) 40px;background:#0a0c10}
 .foot-top{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
