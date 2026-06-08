@@ -252,10 +252,45 @@ main{position:relative;z-index:1}
 .exec em{font-family:var(--mono);font-size:12px;color:var(--mut);text-align:right;font-style:normal}
 .exec.dead b,.exec.dead em{color:#e06b6b}
 .exec.dead .bar i{background:#7a2c2c}
-.xeno-note{text-align:center;margin-top:24px;font-family:var(--mono);font-size:13px;color:var(--mut)}
-.xeno-note a{color:var(--ember);border-bottom:1px solid transparent;transition:.2s}
-.xeno-note a:hover{border-color:var(--ember)}
-.xeno-note small{display:block;margin-top:8px;color:var(--mut2);font-size:11px}
+/* xeno download card */
+.xeno-card{
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg,var(--card),#0b0d11);
+  border:1px solid var(--line);border-radius:20px;padding:clamp(24px,3vw,40px);
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.8);
+}
+.xeno-glow{position:absolute;top:-40%;right:-10%;width:480px;height:480px;
+  background:radial-gradient(circle,rgba(255,107,0,.12),transparent 65%);pointer-events:none}
+.xeno-top{display:flex;align-items:center;gap:22px;position:relative}
+.xeno-orb{
+  width:74px;height:74px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;color:var(--ember);
+  background:radial-gradient(circle at 35% 30%,#1a1f27,#0a0c10);border:1px solid var(--line2);
+  box-shadow:0 0 26px rgba(255,107,0,.22);
+}
+.xeno-head{flex:1;min-width:0}
+.xeno-head h3{font-family:var(--mono);font-size:24px;letter-spacing:-.5px}
+.xeno-ver{color:var(--ember)}
+.xeno-rel{font-family:var(--mono);font-size:11.5px;color:var(--mut2);text-transform:uppercase;letter-spacing:1px;margin:3px 0 8px}
+.xeno-head p{color:var(--mut);font-size:14px;max-width:460px}
+.xeno-size{text-align:right;flex-shrink:0}
+.xeno-size b{display:block;font-family:var(--mono);font-size:20px;color:var(--txt)}
+.xeno-size span{font-family:var(--mono);font-size:11px;color:var(--mut2);text-transform:uppercase;letter-spacing:1px}
+
+.xeno-feats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0;position:relative}
+.xf{display:flex;align-items:center;gap:12px;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:15px 16px;transition:.2s}
+.xf:hover{border-color:var(--line2);transform:translateY(-2px)}
+.xf-ico{font-size:20px;color:var(--ember)}
+.xf b{font-size:14px;font-family:var(--mono)}
+.xf em{display:block;font-style:normal;font-size:12px;color:var(--mut);margin-top:2px}
+
+.xeno-actions{display:flex;gap:12px;flex-wrap:wrap;position:relative}
+.xeno-disc{margin-top:18px;font-family:var(--mono);font-size:11.5px;color:var(--mut2);position:relative}
+
+@media(max-width:720px){
+  .xeno-top{flex-wrap:wrap}
+  .xeno-size{text-align:left}
+  .xeno-feats{grid-template-columns:1fr}
+}
 
 /* footer */
 .footer{border-top:1px solid var(--line);margin-top:50px;padding:46px clamp(16px,5vw,64px) 40px;background:#0a0c10}
