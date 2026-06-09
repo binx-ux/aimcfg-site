@@ -1,5 +1,45 @@
 // ===== aim.cfg site =====
 
+// ===== auto changelog (pulled live from the aim.cfg repo) =====
+// edit changelog.json in github.com/binx-ux/aim.cfg and this updates itself.
+const CHANGELOG_URL = "https://raw.githubusercontent.com/binx-ux/aim.cfg/refs/heads/main/changelog.json";
+const VALID_TYPES = new Set(["wip", "fix", "test", "new", "done"]);
+
+(async function loadChangelog() {
+  const box = document.getElementById("updates");
+  if (!box) return;
+  try {
+    const res = await fetch(CHANGELOG_URL, { cache: "no-store" });
+    if (!res.ok) throw new Error("status " + res.status);
+    const data = await res.json();
+    const entries = Array.isArray(data) ? data : (data.entries || []);
+    if (!entries.length) return; // keep fallback markup
+
+    box.innerHTML = "";
+    for (const e of entries) {
+      const type = VALID_TYPES.has(e.type) ? e.type : "";
+      const row = document.createElement("div");
+      row.className = "update" + (type && type !== "new" ? " " + type : "");
+      const dot = document.createElement("i");
+      const span = document.createElement("span");
+      span.textContent = e.text || "";
+      row.append(dot, span);
+      box.appendChild(row);
+    }
+
+    // optional: reflect version/date in the panel header
+    const head = document.querySelector(".side-head");
+    if (head && data.version) {
+      let tag = head.querySelector(".side-ver");
+      if (!tag) { tag = document.createElement("em"); tag.className = "side-ver"; head.appendChild(tag); }
+      tag.textContent = data.version;
+    }
+  } catch (err) {
+    // fetch failed (offline / rate limited) — the hardcoded list in the HTML stays as-is.
+    console.warn("changelog fetch failed, using fallback:", err);
+  }
+})();
+
 // nav bg on scroll
 const nav = document.getElementById('nav');
 const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);

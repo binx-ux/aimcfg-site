@@ -192,6 +192,8 @@ main{position:relative;z-index:1}
 .panel-side{background:#0a0c10;border-left:1px solid var(--line);padding:clamp(22px,3vw,32px) 22px;display:flex;flex-direction:column}
 .side-head{font-family:var(--mono);font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:18px}
 .side-head .spark{color:var(--ember)}
+.side-ver{margin-left:auto;font-style:normal;font-family:var(--mono);font-size:11px;font-weight:700;
+  color:var(--ember);border:1px solid rgba(255,107,0,.4);border-radius:6px;padding:2px 8px}
 .updates{display:flex;flex-direction:column;gap:9px;overflow-y:auto;max-height:380px;padding-right:6px}
 .updates::-webkit-scrollbar{width:5px}
 .updates::-webkit-scrollbar-thumb{background:var(--line2);border-radius:3px}
