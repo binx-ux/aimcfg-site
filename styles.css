@@ -335,6 +335,51 @@ main{position:relative;z-index:1}
 .gl-note{text-align:center;margin-top:18px;font-family:var(--mono);font-size:12.5px;color:var(--mut2)}
 .gl-note a{color:var(--ember)}
 
+/* full changelog page */
+.cl-main{max-width:820px;margin:0 auto;padding:120px clamp(16px,5vw,40px) 60px;position:relative;z-index:1}
+.cl-back{font-family:var(--mono);font-size:13px;color:var(--mut);transition:.2s;display:inline-block;margin-bottom:24px}
+.cl-back:hover{color:var(--ember)}
+.cl-title{font-size:clamp(38px,7vw,64px);font-weight:700;letter-spacing:-1.5px;line-height:1}
+.cl-sub{font-family:var(--mono);font-size:13px;color:var(--mut2);margin-top:12px}
+.cl-legend{display:flex;flex-wrap:wrap;gap:18px;margin:24px 0 36px;font-family:var(--mono);font-size:12px;color:var(--mut)}
+.cl-legend span{display:flex;align-items:center;gap:7px}
+.cl-legend i{width:8px;height:8px;border-radius:50%}
+.d-wip{background:var(--ember);box-shadow:0 0 8px rgba(255,107,0,.6)}
+.d-fix{background:#ffd23f;box-shadow:0 0 8px rgba(255,210,63,.5)}
+.d-test{background:var(--blurple);box-shadow:0 0 8px rgba(88,101,242,.5)}
+.d-new{background:var(--mut2)}
+
+.cl-release{margin-bottom:38px}
+.cl-rel-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.cl-rel-head h2{font-family:var(--mono);font-size:22px;color:var(--ember);letter-spacing:-.5px}
+.cl-date{font-family:var(--mono);font-size:12px;color:var(--mut2);text-transform:uppercase;letter-spacing:1px}
+.cl-list{display:flex;flex-direction:column;gap:10px;position:relative;padding-left:22px}
+.cl-list::before{content:"";position:absolute;left:3px;top:6px;bottom:6px;width:1px;background:var(--line2)}
+.cl-row{
+  display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);
+  border-radius:11px;padding:14px 16px;position:relative;transition:.2s;
+}
+.cl-row:hover{border-color:var(--line2);transform:translateX(3px)}
+.cl-row>i{position:absolute;left:-22px;width:9px;height:9px;border-radius:50%;background:var(--mut2);border:2px solid var(--bg)}
+.cl-row.wip>i{background:var(--ember);box-shadow:0 0 8px rgba(255,107,0,.6)}
+.cl-row.fix>i{background:#ffd23f;box-shadow:0 0 8px rgba(255,210,63,.5)}
+.cl-row.test>i{background:var(--blurple);box-shadow:0 0 8px rgba(88,101,242,.5)}
+.cl-row>span{flex:1;font-size:14px;color:var(--txt)}
+.cl-tag{font-style:normal;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;
+  color:var(--mut2);border:1px solid var(--line2);border-radius:5px;padding:3px 8px}
+.cl-row.wip .cl-tag{color:var(--ember);border-color:rgba(255,107,0,.4)}
+.cl-row.fix .cl-tag{color:#ffd23f;border-color:rgba(255,210,63,.35)}
+.cl-row.test .cl-tag{color:var(--blurple);border-color:rgba(88,101,242,.4)}
+.cl-empty{font-family:var(--mono);font-size:13px;color:var(--mut);padding:30px 0}
+.cl-empty a{color:var(--ember)}
+
+/* link to full changelog from panel */
+.side-foot{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.side-foot a{font-family:var(--mono);font-size:12px;color:var(--mut);display:flex;align-items:center;gap:6px;transition:.2s}
+.side-foot a:hover{color:var(--ember)}
+.side-foot a span{transition:transform .2s}
+.side-foot a:hover span{transform:translateX(3px)}
+
 /* footer */
 .footer{border-top:1px solid var(--line);margin-top:50px;padding:46px clamp(16px,5vw,64px) 40px;background:#0a0c10}
 .foot-top{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
