@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-06-11T14:33:48Z",
+  "fetched": "2026-06-11T18:07:05Z",
   "robloxVersion": "version-76173e47a79145c7",
   "exploits": {
     "potassium": {
@@ -14,17 +14,17 @@
       "updatedDate": "06/10/2026 at 2:40 PM UTC",
       "website": "https://www.potassium.pro/"
     },
-    "matcha": {
-      "title": "Matcha",
+    "wave": {
+      "title": "Wave",
       "updateStatus": true,
-      "detected": false,
-      "uncPercentage": null,
-      "suncPercentage": null,
+      "detected": true,
+      "uncPercentage": 99,
+      "suncPercentage": 100,
       "platform": "Windows",
-      "version": "v2",
+      "version": "NEW-1.3.3",
       "free": false,
-      "updatedDate": "06/09/2026 at 11:38 PM UTC",
-      "website": "https://matcha-latte.win/"
+      "updatedDate": "06/11/2026 at 3:53 PM UTC",
+      "website": "https://getwave.gg"
     },
     "xeno": {
       "title": "Xeno",
@@ -74,17 +74,17 @@
       "updatedDate": "06/10/2026 at 2:33 AM UTC",
       "website": "https://getsolara.dev"
     },
-    "wave": {
-      "title": "Wave",
-      "updateStatus": false,
-      "detected": true,
-      "uncPercentage": 99,
-      "suncPercentage": 100,
+    "matcha": {
+      "title": "Matcha",
+      "updateStatus": true,
+      "detected": false,
+      "uncPercentage": null,
+      "suncPercentage": null,
       "platform": "Windows",
-      "version": "NEW-1.3.2",
+      "version": "v2",
       "free": false,
-      "updatedDate": "06/06/2026 at 7:48 PM UTC",
-      "website": "https://getwave.gg"
+      "updatedDate": "06/09/2026 at 11:38 PM UTC",
+      "website": "https://matcha-latte.win/"
     },
     "delta": {
       "title": "Delta",
