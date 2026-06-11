@@ -23,8 +23,13 @@ body{
   background:var(--bg);color:var(--txt);
   font-family:var(--disp);line-height:1.5;
   overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  cursor:url(assets/cursor.png) 16 16, auto;
 }
 a{color:inherit;text-decoration:none}
+/* crosshair cursor everywhere, ember variant on interactive elements */
+a,button,summary,input,.copy,.chip,.exec,.fcard,.card,.game-card,.gl-chip,.gl-cta,.btn,[onclick]{
+  cursor:url(assets/cursor-pointer.png) 16 16, pointer !important;
+}
 
 /* ===== splash / loading screen ===== */
 .splash{
@@ -55,20 +60,42 @@ a{color:inherit;text-decoration:none}
 @keyframes loadSlide{0%{transform:translateX(-120%)}100%{transform:translateX(330%)}}
 
 /* ===== backdrop ===== */
-.bg-grid,.bg-scan,.bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0}
+.bg-aurora,.bg-grid,.bg-scan,.bg-glow,.bg-vignette{position:fixed;inset:0;pointer-events:none;z-index:0}
 .bg-grid{
   background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);
   background-size:26px 26px;
-  mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 80%);
+  mask-image:radial-gradient(ellipse 92% 75% at 50% 0%,#000 30%,transparent 80%);
+  animation:gridDrift 50s linear infinite;
 }
+@keyframes gridDrift{from{background-position:0 0}to{background-position:26px 26px}}
 .bg-scan{
   background:repeating-linear-gradient(0deg,rgba(0,0,0,.18) 0 1px,transparent 1px 3px);
   opacity:.35;mix-blend-mode:multiply;
 }
 .bg-glow{
   background:
-    radial-gradient(600px 340px at 50% -6%,rgba(255,107,0,.16),transparent 70%),
-    radial-gradient(700px 500px at 85% 8%,rgba(40,60,90,.12),transparent 70%);
+    radial-gradient(600px 340px at 50% -6%,rgba(255,107,0,.14),transparent 70%);
+  animation:glowDrift 16s ease-in-out infinite alternate;
+}
+@keyframes glowDrift{0%{transform:translateX(-30px)}100%{transform:translateX(30px)}}
+/* animated aurora blobs */
+.bg-aurora{overflow:hidden}
+.bg-aurora::before,.bg-aurora::after{content:"";position:absolute;border-radius:50%;filter:blur(90px)}
+.bg-aurora::before{
+  width:620px;height:620px;top:-260px;left:-80px;
+  background:radial-gradient(circle,rgba(255,107,0,.22),transparent 68%);
+  animation:aur1 24s ease-in-out infinite alternate;
+}
+.bg-aurora::after{
+  width:560px;height:560px;top:-200px;right:-120px;
+  background:radial-gradient(circle,rgba(56,96,156,.2),transparent 68%);
+  animation:aur2 30s ease-in-out infinite alternate;
+}
+@keyframes aur1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(140px,90px) scale(1.25)}}
+@keyframes aur2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-120px,70px) scale(1.18)}}
+.bg-vignette{background:radial-gradient(ellipse 120% 90% at 50% 30%,transparent 55%,rgba(4,5,7,.55) 100%)}
+@media(prefers-reduced-motion:reduce){
+  .bg-grid,.bg-glow,.bg-aurora::before,.bg-aurora::after{animation:none}
 }
 
 /* ===== nav ===== */
@@ -301,6 +328,35 @@ main{position:relative;z-index:1}
 .ftag.new{color:var(--green);border-color:rgba(74,222,128,.4)}
 @media(max-width:860px){.fgrid{grid-template-columns:1fr 1fr}.fcard.wide{grid-column:span 2}}
 @media(max-width:560px){.fgrid{grid-template-columns:1fr}.fcard.wide{grid-column:span 1}.fcard-list.cols{grid-template-columns:1fr}}
+
+/* games cards */
+.game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.game-card{
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg,var(--card),#0c0f14);
+  border:1px solid var(--line);border-radius:var(--r);padding:22px;
+  transition:transform .25s,border-color .25s;
+}
+.game-card::after{content:"";position:absolute;top:-40%;right:-30%;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(255,107,0,.08),transparent 70%);opacity:0;transition:opacity .3s}
+.game-card:hover{transform:translateY(-5px);border-color:var(--line2)}
+.game-card:hover::after{opacity:1}
+.game-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.game-ico{font-size:26px;width:46px;height:46px;display:grid;place-items:center;
+  background:#0a0c10;border:1px solid var(--line);border-radius:11px}
+.game-mode{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;
+  padding:5px 10px;border-radius:6px}
+.game-mode.in{background:rgba(74,222,128,.1);color:var(--green);border:1px solid rgba(74,222,128,.25)}
+.game-mode.ext{background:rgba(255,107,0,.1);color:var(--ember);border:1px solid rgba(255,107,0,.25)}
+.game-card h3{font-family:var(--mono);font-size:18px;letter-spacing:-.3px;margin-bottom:8px}
+.game-card p{font-size:13.5px;color:var(--mut);line-height:1.5;margin-bottom:16px;min-height:60px}
+.game-status{font-family:var(--mono);font-size:11.5px;display:flex;align-items:center;gap:8px;
+  padding-top:14px;border-top:1px solid var(--line)}
+.game-status i{width:7px;height:7px;border-radius:50%}
+.game-status.ok{color:var(--green)} .game-status.ok i{background:var(--green);box-shadow:0 0 8px var(--green)}
+.game-status.warn{color:#ffd23f} .game-status.warn i{background:#ffd23f;box-shadow:0 0 8px rgba(255,210,63,.6)}
+.game-status.info{color:var(--ember)} .game-status.info i{background:var(--ember);box-shadow:0 0 8px rgba(255,107,0,.6)}
+@media(max-width:860px){.game-grid{grid-template-columns:1fr}.game-card p{min-height:0}}
 
 /* games table */
 .table{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}

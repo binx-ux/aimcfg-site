@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>aim.cfg — ex.cs:go.ex</title>
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="favicon.png">
 <meta name="description" content="aim.cfg — a Roblox hub script. aimbot, ESP, hitbox expander, triggerbot, radar, movement. made by kyn.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,9 +30,11 @@
 </div>
 
 <!-- backdrop layers -->
+<div class="bg-aurora"></div>
 <div class="bg-grid"></div>
 <div class="bg-scan"></div>
 <div class="bg-glow"></div>
+<div class="bg-vignette"></div>
 
 <!-- nav -->
 <header class="nav" id="nav">
@@ -261,11 +265,36 @@
   <section class="section" id="games">
     <div class="sec-label">// where it works</div>
     <h2 class="sec-title">Supported Games</h2>
-    <div class="table reveal">
-      <div class="trow thead"><span>Game</span><span>Mode</span><span>Notes</span></div>
-      <div class="trow"><span>Arsenal</span><span class="tag-in">Built-in</span><span>full esp + aimbot</span></div>
-      <div class="trow"><span>MiscGunTest-X</span><span class="tag-in">Built-in</span><span>visuals off (would crash)</span></div>
-      <div class="trow"><span>Everything else</span><span class="tag-ext">Semi-universal</span><span>aimbot + esp, may vary per game</span></div>
+    <div class="game-grid">
+      <div class="game-card reveal">
+        <div class="game-top">
+          <span class="game-ico">🎯</span>
+          <span class="game-mode in">Built-in</span>
+        </div>
+        <h3>Arsenal</h3>
+        <p>full ESP, aimbot, triggerbot and everything else. the most supported game.</p>
+        <div class="game-status ok"><i></i>fully supported</div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-top">
+          <span class="game-ico">🔫</span>
+          <span class="game-mode in">Built-in</span>
+        </div>
+        <h3>MiscGunTest-X</h3>
+        <p>aimbot and radar work. visuals are auto-disabled here because they crash the game.</p>
+        <div class="game-status warn"><i></i>visuals disabled</div>
+      </div>
+
+      <div class="game-card reveal">
+        <div class="game-top">
+          <span class="game-ico">∞</span>
+          <span class="game-mode ext">Semi-universal</span>
+        </div>
+        <h3>Everything else</h3>
+        <p>aimbot and ESP run on most other games out of the box. results can vary per game.</p>
+        <div class="game-status info"><i></i>works on most</div>
+      </div>
     </div>
   </section>
 
