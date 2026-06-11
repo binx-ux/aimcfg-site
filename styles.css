@@ -254,8 +254,8 @@ main{position:relative;z-index:1}
   background:var(--card);border:1px solid var(--line);border-radius:11px;padding:14px 18px;transition:.22s;
 }
 .exec:hover{border-color:var(--line2);transform:translateY(-2px)}
-.exec-name{display:flex;align-items:center;gap:9px;min-width:0}
-.exec-logo{width:22px;height:22px;object-fit:contain;border-radius:5px;flex-shrink:0}
+.exec-name{display:flex;align-items:center;gap:10px;min-width:0}
+.exec-logo{width:48px;height:27px;object-fit:cover;border-radius:5px;flex-shrink:0;border:1px solid var(--line)}
 .exec b{font-family:var(--mono);font-size:14px;white-space:nowrap}
 .exec .bar{height:6px;background:#0a0c10;border-radius:4px;overflow:hidden;border:1px solid var(--line)}
 .exec .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ember-d),var(--ember));border-radius:4px;transition:width 1s cubic-bezier(.2,.8,.2,1)}
