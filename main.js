@@ -1,5 +1,24 @@
 // ===== aim.cfg site =====
 
+// ===== splash screen =====
+(function splash() {
+  const el = document.getElementById("splash");
+  if (!el) return;
+  const MIN_MS = 2200;          // show at least this long so the animation reads
+  const start = performance.now();
+  let done = false;
+  const hide = () => {
+    if (done) return; done = true;
+    const wait = Math.max(0, MIN_MS - (performance.now() - start));
+    setTimeout(() => {
+      el.classList.add("hide");
+      setTimeout(() => el.remove(), 650);
+    }, wait);
+  };
+  window.addEventListener("load", hide);
+  setTimeout(hide, 4500); // fallback in case load never fires
+})();
+
 // ===== auto changelog (pulled live from the aim.cfg repo) =====
 // edit changelog.json in github.com/binx-ux/aim.cfg and this updates itself.
 const CHANGELOG_URL = "https://raw.githubusercontent.com/binx-ux/aim.cfg/refs/heads/main/changelog.json";
