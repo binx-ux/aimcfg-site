@@ -3,7 +3,27 @@
 // ===== auto changelog (pulled live from the aim.cfg repo) =====
 // edit changelog.json in github.com/binx-ux/aim.cfg and this updates itself.
 const CHANGELOG_URL = "https://raw.githubusercontent.com/binx-ux/aim.cfg/refs/heads/main/changelog.json";
-const VALID_TYPES = new Set(["wip", "fix", "test", "new", "done", "added", "removed", "changed"]);
+const PANEL_LIMIT = 12;
+
+// normalize a change type (symbol or word) to { sym, cls }
+function normType(t) {
+  t = (t || "").toString().trim().toLowerCase();
+  if (["+", "added", "add", "new", "done", "feature"].includes(t)) return { sym: "+", cls: "added" };
+  if (["-", "removed", "remove", "delete", "deleted"].includes(t)) return { sym: "-", cls: "removed" };
+  return { sym: "~", cls: "changed" };
+}
+
+// pull the latest release's changes from either the new or old json shape
+function latestChanges(data) {
+  if (Array.isArray(data.changelog) && data.changelog.length) {
+    const rel = data.changelog[0];
+    return { changes: rel.changes || [], version: rel.version, date: rel.date };
+  }
+  if (Array.isArray(data.entries)) {
+    return { changes: data.entries.map(e => ({ type: e.type, note: e.text })), version: data.version };
+  }
+  return { changes: [] };
+}
 
 (async function loadChangelog() {
   const box = document.getElementById("updates");
@@ -12,27 +32,27 @@ const VALID_TYPES = new Set(["wip", "fix", "test", "new", "done", "added", "remo
     const res = await fetch(CHANGELOG_URL, { cache: "no-store" });
     if (!res.ok) throw new Error("status " + res.status);
     const data = await res.json();
-    const entries = Array.isArray(data) ? data : (data.entries || []);
-    if (!entries.length) return; // keep fallback markup
+    const { changes, version } = latestChanges(data);
+    if (!changes.length) return; // keep fallback markup
 
     box.innerHTML = "";
-    for (const e of entries) {
-      const type = VALID_TYPES.has(e.type) ? e.type : "";
+    for (const c of changes.slice(0, PANEL_LIMIT)) {
+      const { cls } = normType(c.type);
       const row = document.createElement("div");
-      row.className = "update" + (type && type !== "new" ? " " + type : "");
+      row.className = "update " + cls;
       const dot = document.createElement("i");
       const span = document.createElement("span");
-      span.textContent = e.text || "";
+      span.textContent = c.note || c.text || "";
       row.append(dot, span);
       box.appendChild(row);
     }
 
-    // optional: reflect version/date in the panel header
+    // reflect version in the panel header
     const head = document.querySelector(".side-head");
-    if (head && data.version) {
+    if (head && version && version !== "latest") {
       let tag = head.querySelector(".side-ver");
       if (!tag) { tag = document.createElement("em"); tag.className = "side-ver"; head.appendChild(tag); }
-      tag.textContent = data.version;
+      tag.textContent = version;
     }
   } catch (err) {
     // fetch failed (offline / rate limited) — the hardcoded list in the HTML stays as-is.
