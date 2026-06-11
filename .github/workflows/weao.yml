@@ -1,0 +1,36 @@
+name: Update executor status (WEAO)
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # every 30 minutes
+  workflow_dispatch: {}        # allow manual runs
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Fetch WEAO status
+        run: python .github/scripts/fetch_weao.py
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- weao.json; then
+            echo "No status change."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add weao.json
+            git commit -m "Update executor status"
+            git push
+          fi

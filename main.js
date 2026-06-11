@@ -60,6 +60,46 @@ function latestChanges(data) {
   }
 })();
 
+// ===== live executor status (from weao.json, refreshed by a scheduled action) =====
+(async function loadWeao() {
+  const cards = document.querySelectorAll(".exec[data-weao]");
+  if (!cards.length) return;
+  try {
+    const res = await fetch("weao.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("status " + res.status);
+    const data = await res.json();
+    const map = data.exploits || {};
+
+    cards.forEach(card => {
+      const key = card.getAttribute("data-weao");
+      const e = map[key];
+      const pill = card.querySelector(".exec-stat");
+      if (!pill) return;
+      if (!e) { pill.className = "exec-stat na"; pill.textContent = "—"; return; }
+      if (e.updateStatus) {
+        pill.className = "exec-stat online";
+        pill.textContent = "online";
+        pill.title = "updated and working on the current Roblox version";
+      } else {
+        pill.className = "exec-stat offline";
+        pill.textContent = "down";
+        pill.title = "not updated to the current Roblox version yet";
+      }
+      if (e.detected) pill.title += " · detected";
+    });
+
+    // "updated Xm ago" label
+    const label = document.getElementById("weao-updated");
+    if (label && data.fetched) {
+      const ageMin = Math.max(0, Math.round((Date.now() - new Date(data.fetched).getTime()) / 60000));
+      label.textContent = ageMin < 1 ? "updated just now" : `updated ${ageMin}m ago`;
+    }
+  } catch (err) {
+    document.querySelectorAll(".exec .exec-stat:not(.blocked)").forEach(p => { p.className = "exec-stat na"; p.textContent = "—"; });
+    console.warn("weao status fetch failed:", err);
+  }
+})();
+
 // nav bg on scroll
 const nav = document.getElementById('nav');
 const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
