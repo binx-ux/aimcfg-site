@@ -23,6 +23,7 @@ WANTED = {
     "wave": None,
     "seliware": None,
     "synapse z": None,
+    "matcha": None,
     "volt": None,
     "xeno": None,
     "solara": None,

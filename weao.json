@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-06-11T10:55:58Z",
+  "fetched": "2026-06-11T11:02:22Z",
   "robloxVersion": "version-76173e47a79145c7",
   "exploits": {
     "potassium": {
@@ -13,6 +13,18 @@
       "free": false,
       "updatedDate": "06/10/2026 at 2:40 PM UTC",
       "website": "https://www.potassium.pro/"
+    },
+    "matcha": {
+      "title": "Matcha",
+      "updateStatus": true,
+      "detected": false,
+      "uncPercentage": null,
+      "suncPercentage": null,
+      "platform": "Windows",
+      "version": "v2",
+      "free": false,
+      "updatedDate": "06/09/2026 at 11:38 PM UTC",
+      "website": "https://matcha-latte.win/"
     },
     "xeno": {
       "title": "Xeno",
