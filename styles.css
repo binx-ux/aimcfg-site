@@ -249,6 +249,31 @@ main{position:relative;z-index:1}
 .card p{font-size:14px;color:var(--mut)}
 .badge{font-family:var(--mono);font-size:10px;color:var(--ember);border:1px solid var(--ember);border-radius:5px;padding:2px 7px;letter-spacing:1px}
 
+/* feature cards (real script capabilities) */
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fcard{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;
+  transition:transform .25s,border-color .25s,background .25s;position:relative;overflow:hidden;
+}
+.fcard::before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:2px;
+  background:linear-gradient(90deg,var(--ember),transparent);opacity:0;transition:opacity .3s}
+.fcard:hover::before{opacity:1}
+.fcard:hover{transform:translateY(-4px);border-color:var(--line2);background:var(--card2)}
+.fcard.wide{grid-column:span 2}
+.fcard-head{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.fcard-ico{font-size:18px;color:var(--ember);width:30px;height:30px;display:grid;place-items:center;
+  background:rgba(255,107,0,.08);border:1px solid rgba(255,107,0,.25);border-radius:8px;flex-shrink:0}
+.fcard-head h3{font-family:var(--mono);font-size:16px;letter-spacing:-.3px;display:flex;align-items:center;gap:8px}
+.fcard-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.fcard-list.cols{display:grid;grid-template-columns:1fr 1fr;gap:7px 18px}
+.fcard-list li{font-family:var(--mono);font-size:12.5px;color:var(--mut);line-height:1.4;padding-left:14px;position:relative}
+.fcard-list li::before{content:"›";position:absolute;left:0;color:var(--ember);font-weight:700}
+.ftag{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--mut2);
+  border:1px solid var(--line2);border-radius:4px;padding:1px 6px;vertical-align:middle}
+.ftag.new{color:var(--green);border-color:rgba(74,222,128,.4)}
+@media(max-width:860px){.fgrid{grid-template-columns:1fr 1fr}.fcard.wide{grid-column:span 2}}
+@media(max-width:560px){.fgrid{grid-template-columns:1fr}.fcard.wide{grid-column:span 1}.fcard-list.cols{grid-template-columns:1fr}}
+
 /* games table */
 .table{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--card)}
 .trow{display:grid;grid-template-columns:1.4fr .8fr 1.3fr;gap:14px;padding:16px 22px;border-bottom:1px solid var(--line);font-size:14px;align-items:center;transition:background .2s}

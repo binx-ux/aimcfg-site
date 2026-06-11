@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>aim.cfg — ex.cs:go.ex v7</title>
-<meta name="description" content="aim.cfg — a Roblox hub script. aimbot, ESP, silent aim, triggerbot, movement. made by kyn.">
+<meta name="description" content="aim.cfg — a Roblox hub script. aimbot, ESP, hitbox expander, triggerbot, radar, movement. made by kyn.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -53,10 +53,10 @@
     <div class="chips reveal">
       <span class="chip">aimbot</span>
       <span class="chip">esp</span>
-      <span class="chip">silent aim</span>
+      <span class="chip">hitbox expander</span>
       <span class="chip">triggerbot</span>
+      <span class="chip">radar</span>
       <span class="chip">movement</span>
-      <span class="chip">multi-game</span>
     </div>
 
     <div class="hero-actions reveal">
@@ -67,9 +67,9 @@
     <div class="stats reveal">
       <div class="stat"><b data-count="9">0</b><span>executors</span></div>
       <div class="divider"></div>
-      <div class="stat"><b data-count="2">0</b><span>games</span></div>
+      <div class="stat"><b data-count="6">0</b><span>menu tabs</span></div>
       <div class="divider"></div>
-      <div class="stat"><b data-count="8">0</b><span>themes</span></div>
+      <div class="stat"><b data-count="60" data-suffix="+">0</b><span>features</span></div>
       <div class="divider"></div>
       <div class="stat live"><b><i></i>live</b><span>v7 active</span></div>
     </div>
@@ -127,14 +127,13 @@
       <aside class="panel-side">
         <div class="side-head"><span class="spark">✦</span> Latest Updates</div>
         <div class="updates" id="updates">
-          <div class="update wip"><i></i>triggerbot rework — keep firing till target dead</div>
-          <div class="update wip"><i></i>silent aim still being worked on</div>
-          <div class="update fix"><i></i>investigating game crashes, be patient</div>
-          <div class="update test"><i></i>mobile build in testing</div>
-          <div class="update"><i></i>added xeno mirror for direct download</div>
-          <div class="update"><i></i>8 themes — csgo, purple, blue, red +more</div>
-          <div class="update"><i></i>offscreen arrows added to esp</div>
-          <div class="update"><i></i>silent aim auto method detection</div>
+          <div class="update added"><i></i>color picker for esp, crosshair, radar, fov</div>
+          <div class="update added"><i></i>3D box esp and corner brackets</div>
+          <div class="update added"><i></i>circular compass radar</div>
+          <div class="update changed"><i></i>aimbot no longer freezes movement while aiming</div>
+          <div class="update changed"><i></i>hitbox expander now skips teammates</div>
+          <div class="update added"><i></i>hitbox expander invisible mode</div>
+          <div class="update removed"><i></i>removed third person and waypoints</div>
         </div>
         <div class="side-foot">
           <a href="changelog.html">view full changelog <span>→</span></a>
@@ -147,16 +146,99 @@
   <section class="section" id="features">
     <div class="sec-label">// everything inside</div>
     <h2 class="sec-title">Features</h2>
-    <div class="grid">
-      <div class="card reveal"><h3>Aimbot</h3><p>smoothness, prediction, FOV, line of sight checks, multi-target.</p></div>
-      <div class="card reveal"><h3>Silent Aim <span class="badge">WIP</span></h3><p>hookmetamethod + setreadonly support with auto method detection.</p></div>
-      <div class="card reveal"><h3>Triggerbot</h3><p>mouse.Target based, works alongside the aimbot.</p></div>
-      <div class="card reveal"><h3>ESP</h3><p>names, health bar, distance, box, chams, skeleton, tracers, offscreen arrows.</p></div>
-      <div class="card reveal"><h3>Crosshair</h3><p>6 styles with dynamic spread.</p></div>
-      <div class="card reveal"><h3>Radar</h3><p>camera-relative radar.</p></div>
-      <div class="card reveal"><h3>Movement</h3><p>speed, fly, noclip, bhop, auto teleport.</p></div>
-      <div class="card reveal"><h3>Hub Launcher</h3><p>game detection and external script loading.</p></div>
-      <div class="card reveal"><h3>8 Themes</h3><p>csgo, purple, blue, red, green, cyan, midnight, rose.</p></div>
+    <div class="fgrid">
+      <div class="fcard reveal">
+        <div class="fcard-head"><span class="fcard-ico">◎</span><h3>Aimbot</h3></div>
+        <ul class="fcard-list">
+          <li>smooth camera aimbot, movement stays free while aiming</li>
+          <li>FOV circle: smooth, dots, or filled <span class="ftag">color picker</span></li>
+          <li>velocity prediction + line-of-sight checks</li>
+          <li>hit part select (head / hrp / torso), hold or toggle</li>
+          <li>smart target validation: skips dead, ragdoll, underground</li>
+        </ul>
+      </div>
+
+      <div class="fcard reveal">
+        <div class="fcard-head"><span class="fcard-ico">⊹</span><h3>Triggerbot</h3></div>
+        <ul class="fcard-list">
+          <li>auto-fires when your aim is on an enemy</li>
+          <li>adjustable fire delay and trigger FOV</li>
+          <li>works off mouse target or the aimbot lock</li>
+        </ul>
+      </div>
+
+      <div class="fcard reveal">
+        <div class="fcard-head"><span class="fcard-ico">⛶</span><h3>Hitbox Expander <span class="ftag new">new</span></h3></div>
+        <ul class="fcard-list">
+          <li>expands enemy hitboxes for easier hits</li>
+          <li>team check, skips your own teammates</li>
+          <li>size slider + invisible mode with transparency</li>
+        </ul>
+      </div>
+
+      <div class="fcard reveal wide">
+        <div class="fcard-head"><span class="fcard-ico">▣</span><h3>ESP</h3></div>
+        <ul class="fcard-list cols">
+          <li>corner or 3D bounding boxes</li>
+          <li>chams fill</li>
+          <li>names + equipped item</li>
+          <li>health bar (green → red gradient)</li>
+          <li>distance</li>
+          <li>tracers, 4 origins</li>
+          <li>skeleton (R6 + R15)</li>
+          <li>head dot</li>
+          <li>offscreen arrows</li>
+          <li>self ESP</li>
+          <li>8 color presets + picker</li>
+          <li>custom font + size</li>
+        </ul>
+      </div>
+
+      <div class="fcard reveal">
+        <div class="fcard-head"><span class="fcard-ico">✛</span><h3>Crosshair</h3></div>
+        <ul class="fcard-list">
+          <li>6 styles: cross, dot, circle, X, KV, sniper</li>
+          <li>size, gap, thickness, opacity</li>
+          <li>dynamic spread, rainbow, outline, center dot</li>
+        </ul>
+      </div>
+
+      <div class="fcard reveal">
+        <div class="fcard-head"><span class="fcard-ico">◴</span><h3>Radar</h3></div>
+        <ul class="fcard-list">
+          <li>circular compass radar (N / E / S / W)</li>
+          <li>enemy + team colors, health-tinted dots</li>
+          <li>range slider, off-radar edge arrows, names</li>
+        </ul>
+      </div>
+
+      <div class="fcard reveal">
+        <div class="fcard-head"><span class="fcard-ico">⚡</span><h3>Movement</h3></div>
+        <ul class="fcard-list">
+          <li>speed (walkspeed / cframe / velocity)</li>
+          <li>fly + shift boost, float, bunny hop</li>
+          <li>noclip, jump power</li>
+        </ul>
+      </div>
+
+      <div class="fcard reveal">
+        <div class="fcard-head"><span class="fcard-ico">✦</span><h3>World &amp; Combat</h3></div>
+        <ul class="fcard-list">
+          <li>fullbright, no fog, custom FOV</li>
+          <li>gun mods: fast reload, fire rate, auto</li>
+          <li>no spread, no recoil</li>
+        </ul>
+      </div>
+
+      <div class="fcard reveal">
+        <div class="fcard-head"><span class="fcard-ico">⚙</span><h3>Misc &amp; QoL</h3></div>
+        <ul class="fcard-list">
+          <li>anti-afk, auto rejoin, anti-fling</li>
+          <li>auto tp, server hop, chat spam / spy</li>
+          <li>watermark (fps / ping / time), panic key</li>
+          <li>custom keybinds + notification sounds</li>
+        </ul>
+      </div>
     </div>
   </section>
 

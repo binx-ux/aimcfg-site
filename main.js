@@ -137,12 +137,13 @@ const cio = new IntersectionObserver((entries) => {
     if (!e.isIntersecting) return;
     const el = e.target;
     const target = +el.dataset.count;
+    const suffix = el.dataset.suffix || "";
     let n = 0;
     const step = Math.max(1, Math.round(target / 28));
     const tick = () => {
       n += step;
-      if (n >= target) { el.textContent = target; }
-      else { el.textContent = n; requestAnimationFrame(tick); }
+      if (n >= target) { el.textContent = target + suffix; }
+      else { el.textContent = n + suffix; requestAnimationFrame(tick); }
     };
     tick();
     cio.unobserve(el);
