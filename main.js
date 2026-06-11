@@ -100,6 +100,19 @@ function latestChanges(data) {
   }
 })();
 
+// dismissible notice (re-shows if the message changes via the key)
+(function notice() {
+  const el = document.getElementById("notice");
+  const x = document.getElementById("notice-x");
+  if (!el || !x) return;
+  const KEY = "aimcfg-notice-2026-06-hiatus";
+  if (localStorage.getItem(KEY) === "1") { el.classList.add("hidden"); return; }
+  x.addEventListener("click", () => {
+    el.classList.add("hidden");
+    try { localStorage.setItem(KEY, "1"); } catch {}
+  });
+})();
+
 // nav bg on scroll
 const nav = document.getElementById('nav');
 const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
