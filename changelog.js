@@ -1,6 +1,6 @@
 // ===== full changelog page =====
 const CHANGELOG_URL = "https://raw.githubusercontent.com/binx-ux/aim.cfg/refs/heads/main/changelog.json";
-const VALID_TYPES = new Set(["wip", "fix", "test", "new", "done"]);
+const VALID_TYPES = new Set(["wip", "fix", "test", "new", "done", "added", "removed", "changed"]);
 
 function makeEntry(e) {
   const type = VALID_TYPES.has(e.type) ? e.type : "new";

@@ -3,7 +3,7 @@
 // ===== auto changelog (pulled live from the aim.cfg repo) =====
 // edit changelog.json in github.com/binx-ux/aim.cfg and this updates itself.
 const CHANGELOG_URL = "https://raw.githubusercontent.com/binx-ux/aim.cfg/refs/heads/main/changelog.json";
-const VALID_TYPES = new Set(["wip", "fix", "test", "new", "done"]);
+const VALID_TYPES = new Set(["wip", "fix", "test", "new", "done", "added", "removed", "changed"]);
 
 (async function loadChangelog() {
   const box = document.getElementById("updates");
