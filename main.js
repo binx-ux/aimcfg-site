@@ -124,7 +124,7 @@ function latestChanges(data) {
   const el = document.getElementById("notice");
   const x = document.getElementById("notice-x");
   if (!el || !x) return;
-  const KEY = "aimcfg-notice-2026-06-hiatus";
+  const KEY = "aimcfg-notice-2026-06-newscript";
   if (localStorage.getItem(KEY) === "1") { el.classList.add("hidden"); return; }
   x.addEventListener("click", () => {
     el.classList.add("hidden");
