@@ -37,30 +37,45 @@ const TYPEWRITER_LINES = [
 
 // ===== view switching =====
 (function views() {
-  const home = document.getElementById("view-home");
-  const scripts = document.getElementById("view-scripts");
-  const btnScripts = document.getElementById("btn-scripts");
-  const btnBack = document.getElementById("btn-back");
-  if (!home || !scripts || !btnScripts || !btnBack) return;
+  const sections = {
+    home: document.getElementById("view-home"),
+    scripts: document.getElementById("view-scripts"),
+    profiles: document.getElementById("view-profiles")
+  };
+  if (!sections.home || !sections.scripts || !sections.profiles) return;
 
-  const showScripts = () => {
-    home.classList.remove("active");
-    home.hidden = true;
-    scripts.hidden = false;
-    requestAnimationFrame(() => scripts.classList.add("active"));
+  const show = (name) => {
+    for (const key in sections) {
+      const el = sections[key];
+      if (key === name) {
+        el.hidden = false;
+        requestAnimationFrame(() => el.classList.add("active"));
+      } else {
+        el.classList.remove("active");
+        el.hidden = true;
+      }
+    }
     window.scrollTo(0, 0);
   };
 
-  const showHome = () => {
-    scripts.classList.remove("active");
-    scripts.hidden = true;
-    home.hidden = false;
-    requestAnimationFrame(() => home.classList.add("active"));
-    window.scrollTo(0, 0);
+  const go = (name) => {
+    location.hash = name === "home" ? "" : name;
+    show(name);
   };
 
-  btnScripts.addEventListener("click", showScripts);
-  btnBack.addEventListener("click", showHome);
+  document.getElementById("btn-scripts")?.addEventListener("click", () => go("scripts"));
+  document.getElementById("btn-profiles")?.addEventListener("click", () => go("profiles"));
+  document.querySelectorAll(".btn-back").forEach(btn => {
+    btn.addEventListener("click", () => go("home"));
+  });
+
+  window.addEventListener("hashchange", () => {
+    const h = location.hash.replace("#", "");
+    show(h === "scripts" || h === "profiles" ? h : "home");
+  });
+
+  const initial = location.hash.replace("#", "");
+  if (initial === "scripts" || initial === "profiles") show(initial);
 })();
 
 // ===== typewriter bio =====
@@ -156,6 +171,15 @@ document.querySelectorAll(".pcard-banner video").forEach(v => {
   const card = v.closest(".pcard");
   card?.addEventListener("mouseenter", () => v.play().catch(() => {}));
   card?.addEventListener("mouseleave", () => { v.pause(); v.currentTime = 0; });
+});
+
+// ===== profile card media fallbacks =====
+document.querySelectorAll(".pcard-video").forEach(v => {
+  v.addEventListener("error", () => v.classList.add("media-fail"), true);
+});
+
+document.querySelectorAll(".pcard-rs-embed").forEach(img => {
+  img.addEventListener("error", () => img.classList.add("media-fail"), { once: true });
 });
 
 // ===== toast =====

@@ -76,30 +76,10 @@
       </a>
     </div>
 
-    <div class="profile-cards">
-      <a class="pcard pcard-guns" href="https://guns.lol/kynvyr_" target="_blank" rel="noopener">
-        <div class="pcard-banner">
-          <video muted loop playsinline preload="metadata" poster="https://r2.guns.lol/166a9d7b-1531-4f03-807c-792a510b48b5.jpg">
-            <source src="https://r2.guns.lol/7d5d9cec-2268-4061-835d-c072f34be483.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="pcard-body">
-          <span class="pcard-tag">guns.lol</span>
-          <span class="pcard-title">@kynvyr_</span>
-          <span class="pcard-sub">verified profile</span>
-        </div>
-      </a>
-
-      <a class="pcard pcard-rs" href="https://rscripts.net/user/kyn" target="_blank" rel="noopener">
-        <div class="pcard-body pcard-body-full">
-          <span class="pcard-tag">rscripts</span>
-          <span class="pcard-title">@kyn</span>
-          <img class="pcard-embed" alt="kyn on Rscripts" loading="lazy" width="360" height="132" src="https://rscripts.net/api/embed/user/kyn?theme=dark">
-        </div>
-      </a>
+    <div class="btn-row">
+      <button class="btn-scripts" id="btn-scripts">My Scripts</button>
+      <button class="btn-scripts" id="btn-profiles">Profiles</button>
     </div>
-
-    <button class="btn-scripts" id="btn-scripts">My Scripts</button>
   </div>
 </section>
 
@@ -153,6 +133,42 @@
         <img alt="kyn on Rscripts" loading="lazy" width="360" height="132" src="https://rscripts.net/api/embed/user/kyn?theme=dark">
       </a>
       <a class="btn-open-rs" href="https://rscripts.net/user/kyn" target="_blank" rel="noopener">Open profile →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROFILES: guns.lol + rscripts side by side ===== -->
+<section class="view view-profiles" id="view-profiles" hidden>
+  <button class="btn-back">← back</button>
+
+  <div class="profiles-center">
+    <h2 class="profiles-title">Profiles</h2>
+
+    <div class="profile-cards">
+      <a class="pcard pcard-guns" href="https://guns.lol/kynvyr_" target="_blank" rel="noopener">
+        <div class="pcard-banner">
+          <video class="pcard-video" muted loop playsinline preload="metadata">
+            <source src="https://r2.guns.lol/7d5d9cec-2268-4061-835d-c072f34be483.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pcard-body">
+          <span class="pcard-tag">guns.lol</span>
+          <span class="pcard-title">@kynvyr_</span>
+          <span class="pcard-sub">verified profile</span>
+        </div>
+      </a>
+
+      <a class="pcard pcard-rs" href="https://rscripts.net/user/kyn" target="_blank" rel="noopener">
+        <div class="pcard-banner pcard-banner-rs">
+          <span class="pcard-rs-mark">R</span>
+          <img class="pcard-rs-embed" alt="" loading="lazy" src="https://rscripts.net/api/embed/user/kyn?theme=dark">
+        </div>
+        <div class="pcard-body">
+          <span class="pcard-tag">rscripts</span>
+          <span class="pcard-title">@kyn</span>
+          <span class="pcard-sub">scripts &amp; uploads</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
