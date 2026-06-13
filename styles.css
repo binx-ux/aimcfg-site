@@ -27,7 +27,7 @@ body{
 }
 a{color:inherit;text-decoration:none}
 /* crosshair cursor everywhere, ember variant on interactive elements */
-a,button,summary,input,.copy,.chip,.exec,.fcard,.card,.game-card,.gl-chip,.gl-cta,.btn,[onclick]{
+a,button,summary,input,.copy,.chip,.exec,.fcard,.card,.game-card,.gl-chip,.gl-cta,.btn,.media-card,.rs-embed,[onclick]{
   cursor:url(assets/cursor-pointer.png) 16 16, pointer !important;
 }
 
@@ -442,16 +442,25 @@ main{position:relative;z-index:1}
 }
 
 /* guns.lol card */
+.profile-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:20px;align-items:start;
+}
 .gl-card{
-  display:block;max-width:520px;margin:0 auto;position:relative;overflow:hidden;
+  display:block;position:relative;overflow:hidden;
   background:linear-gradient(180deg,var(--card),#0b0d11);border:1px solid var(--line);
   border-radius:20px;transition:transform .3s,border-color .3s,box-shadow .3s;
   box-shadow:0 24px 60px -28px rgba(0,0,0,.8);
 }
-.gl-card:hover{transform:translateY(-5px);border-color:var(--line2);box-shadow:0 34px 80px -28px rgba(255,107,0,.25)}
-.gl-banner{height:150px;position:relative;overflow:hidden;background:linear-gradient(180deg,#15171d,#0d0f13)}
+.gl-card:hover{transform:translateY(-5px);border-color:rgba(192,132,252,.35);box-shadow:0 34px 80px -28px rgba(123,47,247,.3)}
+.gl-banner{height:170px;position:relative;overflow:hidden;background:linear-gradient(180deg,#15171d,#0d0f13)}
 .gl-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .gl-banner-fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,13,17,.05) 40%,rgba(11,13,17,.55) 80%,#0b0d11 100%)}
+.gl-badge{
+  position:absolute;top:14px;right:14px;z-index:2;
+  font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:#e2e8f0;background:rgba(123,47,247,.35);border:1px solid rgba(192,132,252,.35);
+  border-radius:6px;padding:4px 9px;backdrop-filter:blur(6px);
+}
 .gl-body{padding:0 26px 26px;position:relative}
 .gl-avatar{
   width:92px;height:92px;border-radius:50%;margin-top:-46px;position:relative;
@@ -465,24 +474,99 @@ main{position:relative;z-index:1}
 }
 .gl-name{display:flex;align-items:baseline;gap:10px;margin-top:14px;flex-wrap:wrap}
 .gl-name h3{font-size:24px;font-family:var(--mono);letter-spacing:-.5px}
-.gl-handle{font-family:var(--mono);font-size:13px;color:var(--ember)}
-.gl-bio{color:var(--mut);font-size:14px;margin-top:8px}
+.gl-handle{font-family:var(--mono);font-size:13px;color:#c084fc}
+.gl-bio{color:var(--mut);font-size:14px;margin-top:8px;line-height:1.55}
+.gl-meta{
+  display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;
+  font-family:var(--mono);font-size:11.5px;color:var(--mut2);
+}
+.gl-meta span{display:inline-flex;align-items:center;gap:6px}
+.gl-meta svg{opacity:.7}
 .gl-socials{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .gl-chip{font-family:var(--mono);font-size:11.5px;color:var(--mut);border:1px solid var(--line);
   border-radius:7px;padding:6px 11px;background:rgba(255,255,255,.02);transition:.2s;cursor:pointer;
   display:inline-flex;align-items:center;gap:6px}
 .gl-chip svg{width:13px;height:13px;flex-shrink:0}
-.gl-chip:hover{border-color:var(--ember);color:var(--ember);transform:translateY(-2px)}
+.gl-chip:hover{border-color:#c084fc;color:#c084fc;transform:translateY(-2px)}
 .gl-cta{
   margin-top:20px;display:flex;align-items:center;justify-content:center;gap:9px;
   font-family:var(--disp);font-weight:700;font-size:14px;color:#160a00;
   background:linear-gradient(180deg,#ff7d1a,var(--ember));border-radius:11px;padding:13px;
   box-shadow:0 6px 22px rgba(255,107,0,.25);transition:.2s;
 }
+.gl-cta-purple{
+  color:#e2e8f0;
+  background:linear-gradient(180deg,rgba(192,132,252,.45),rgba(123,47,247,.55));
+  border:1px solid rgba(192,132,252,.25);
+  box-shadow:0 6px 22px rgba(123,47,247,.25);
+}
+.gl-cta-purple:hover{box-shadow:0 10px 30px rgba(123,47,247,.4)}
 .gl-cta span{transition:transform .2s}
-.gl-card:hover .gl-cta span{transform:translateX(4px)}
+.gl-card:hover .gl-cta span,.rs-card:hover .gl-cta span{transform:translateX(4px)}
 .gl-note{text-align:center;margin-top:18px;font-family:var(--mono);font-size:12.5px;color:var(--mut2)}
 .gl-note a{color:var(--ember)}
+
+/* rscripts card */
+.rs-card{
+  background:linear-gradient(180deg,var(--card),#0b0d11);border:1px solid var(--line);
+  border-radius:20px;padding:26px;transition:transform .3s,border-color .3s,box-shadow .3s;
+  box-shadow:0 24px 60px -28px rgba(0,0,0,.8);display:flex;flex-direction:column;
+}
+.rs-card:hover{transform:translateY(-5px);border-color:var(--line2);box-shadow:0 34px 80px -28px rgba(255,107,0,.2)}
+.rs-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.rs-logo{
+  width:52px;height:52px;border-radius:12px;display:grid;place-items:center;
+  font-family:var(--mono);font-weight:800;font-size:22px;color:var(--ember);
+  background:radial-gradient(circle at 35% 30%,#1a1f27,#0a0c10);border:1px solid var(--line2);
+  box-shadow:0 0 18px rgba(255,107,0,.15);
+}
+.rs-head h3{font-family:var(--mono);font-size:22px;letter-spacing:-.5px}
+.rs-handle{font-family:var(--mono);font-size:13px;color:var(--ember);margin-top:2px}
+.rs-desc{color:var(--mut);font-size:14px;line-height:1.5;margin-bottom:18px;flex:1}
+.rs-embed{
+  display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);
+  background:#070809;margin-bottom:18px;transition:border-color .2s;
+}
+.rs-embed:hover{border-color:var(--ember)}
+.rs-embed img{display:block;width:100%;height:auto;max-width:360px;margin:0 auto}
+
+/* project spotlight */
+.project-spotlight{
+  background:linear-gradient(180deg,var(--card),#0c0f14);border:1px solid var(--line);
+  border-radius:18px;padding:24px 28px;margin-bottom:0;
+}
+.project-spotlight-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.project-spotlight-ico{
+  width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--mono);color:var(--ember);font-size:22px;font-weight:800;
+  background:radial-gradient(circle at 35% 30%,#1a1f27,#0a0c10);border:1px solid var(--line2);
+}
+.project-spotlight-top h3{font-family:var(--mono);font-size:22px;flex:1;min-width:120px}
+.project-spotlight-tag{font-family:var(--mono);font-size:12px;color:var(--mut2);margin-top:2px}
+.project-spotlight-desc{color:var(--mut);font-size:14px;margin-top:16px;max-width:720px;line-height:1.55}
+#projects .sec-title{margin-bottom:22px}
+#projects + .panel-wrap{padding-top:24px}
+
+/* media grid (guns.lol) */
+.media-section{margin-top:48px}
+.media-title{font-size:24px;font-weight:700;letter-spacing:-.5px;margin-bottom:20px}
+.media-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.media-card{
+  position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);
+  background:var(--card);aspect-ratio:1;transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.media-card:hover{transform:translateY(-4px);border-color:rgba(192,132,252,.35);box-shadow:0 16px 40px -16px rgba(123,47,247,.35)}
+.media-card video,.media-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.media-video{grid-column:span 2;aspect-ratio:16/9}
+.media-overlay{
+  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:14px;background:linear-gradient(180deg,transparent 40%,rgba(8,9,11,.85));
+}
+.media-tag{
+  font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:1px;
+  color:#c084fc;margin-bottom:4px;
+}
+.media-name{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--txt)}
 
 /* full changelog page */
 .cl-main{max-width:820px;margin:0 auto;padding:120px clamp(16px,5vw,40px) 60px;position:relative;z-index:1}
@@ -573,9 +657,14 @@ main{position:relative;z-index:1}
   .trow{grid-template-columns:1fr;gap:6px}
   .trow span:last-child,.thead{display:none}
   .foot-credits{flex-direction:column}
+  .profile-grid{grid-template-columns:1fr}
+  .media-grid{grid-template-columns:repeat(2,1fr)}
+  .media-video{grid-column:span 2}
 }
 @media(max-width:520px){
   .grid{grid-template-columns:1fr}
   .stats{gap:18px}
   .divider{display:none}
+  .media-grid{grid-template-columns:1fr}
+  .media-video{grid-column:span 1;aspect-ratio:16/10}
 }
