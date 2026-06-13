@@ -3,501 +3,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>kyn — portfolio</title>
+<title>kyn | guns.lol</title>
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="favicon.png">
-<meta name="description" content="kyn — roblox scripter & developer. aim.cfg, guns.lol, rscripts. if it can be done i prob done it.">
+<meta name="description" content="Your hand finds my hand two heartbeats learning one song, quiet as warm rain.">
+<meta property="og:title" content="kyn | portfolio">
+<meta property="og:image" content="https://og.guns.lol/api/og?username=kynvyr_&background=https%3A%2F%2Fr2.guns.lol%2F166a9d7b-1531-4f03-807c-792a510b48b5.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;700&family=Silkscreen:wght@400;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- splash / loading screen -->
-<div class="splash" id="splash">
-  <video class="splash-video" autoplay muted loop playsinline preload="auto">
+<!-- click to enter -->
+<div class="enter-screen" id="enter">
+  <video class="enter-video" muted loop playsinline preload="auto">
     <source src="https://r2.guns.lol/7d5d9cec-2268-4061-835d-c072f34be483.mp4" type="video/mp4">
   </video>
-  <div class="splash-overlay"></div>
-  <div class="splash-grid"></div>
-  <div class="splash-content">
-    <div class="splash-leaf">🍃</div>
-    <div class="splash-title">kyn</div>
-    <div class="splash-sub">portfolio</div>
-    <div class="splash-bar"><i></i></div>
-  </div>
+  <div class="enter-overlay"></div>
+  <p class="enter-text">click to enter...</p>
 </div>
 
-<!-- backdrop layers -->
-<div class="bg-aurora"></div>
-<div class="bg-grid"></div>
-<div class="bg-scan"></div>
-<div class="bg-glow"></div>
-<div class="bg-vignette"></div>
+<!-- persistent background -->
+<video class="page-bg" id="bg-video" muted loop playsinline preload="auto">
+  <source src="https://r2.guns.lol/7d5d9cec-2268-4061-835d-c072f34be483.mp4" type="video/mp4">
+</video>
+<div class="page-overlay"></div>
 
-<!-- nav -->
-<header class="nav" id="nav">
-  <a class="brand" href="#top">
-    <span class="brand-mark">k</span>
-    <span class="brand-name">kyn</span>
-  </a>
-  <nav class="nav-links">
-    <a href="#top">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#profiles">Profiles</a>
-    <a href="#features">Features</a>
-    <a href="#get">Download</a>
-  </nav>
-  <a class="btn btn-discord" href="https://discord.gg/pjfPGmzbN7" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.5c1.6.4 2.4.9 3.5 1.6a13.6 13.6 0 0 0-10.4 0C9.4 4.4 10.3 4 11.8 3.5L11.6 3A19.8 19.8 0 0 0 6.7 4.4 20.7 20.7 0 0 0 3 18.6 19.9 19.9 0 0 0 9 21.5l.4-.7c-1-.3-1.8-.7-2.6-1.2l.6-.5a14.2 14.2 0 0 0 12.2 0l.6.5c-.8.5-1.7.9-2.6 1.2l.4.7a19.8 19.8 0 0 0 6-2.9 20.6 20.6 0 0 0-3.7-14.2ZM9.3 15.4c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.7 2-1.7 2Zm5.4 0c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.7 2-1.7 2Z"/></svg>
-    Join Discord
-  </a>
-</header>
+<!-- ui chrome -->
+<button class="ui-vol" id="vol-btn" aria-label="Toggle volume">
+  <svg class="vol-on" viewBox="0 0 48 48" width="18" height="18"><path fill="currentColor" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Zm8 9a11.91 11.91 0 0 1 1.684 1.859A12.07 12.07 0 0 1 36 24c0 2.654-.846 5.107-2.278 7.09A11.936 11.936 0 0 1 32 33m2.236 8.186C40.084 37.696 44 31.305 44 24c0-7.192-3.796-13.496-9.493-17.02"/></svg>
+  <svg class="vol-off" viewBox="0 0 48 48" width="18" height="18" hidden><path fill="currentColor" d="M24 6v36c-7 0-12.201-9.16-12.201-9.16H6a2 2 0 0 1-2-2V17.01a2 2 0 0 1 2-2h5.799S17 6 24 6Zm14.828 11.172a4 4 0 0 0-5.656 0L24 26.344l-9.172-9.172a4 4 0 1 0-5.656 5.656L18.344 32l-9.172 9.172a4 4 0 1 0 5.656 5.656L24 37.656l9.172 9.172a4 4 0 0 0 5.656-5.656L29.656 32l9.172-9.172a4 4 0 0 0 0-5.656Z"/></svg>
+</button>
 
-<!-- hero -->
-<main id="top">
-  <section class="hero">
-    <div class="notice reveal" id="notice" role="status">
-      <span class="notice-ico">!</span>
-      <p>i was mistaken, i'm not going anywhere. i'm starting work on 2 new projects: one for TSB, and the other is a secret for now. it's a change of my philosophy but i'm sure they'll come out good. just stand by and wait. eta: N/A</p>
-      <button class="notice-x" id="notice-x" aria-label="dismiss">&times;</button>
-    </div>
-    <div class="hero-tag reveal">@kynvyr_ · SKY</div>
-    <h1 class="hero-title reveal">k<span class="crosshair-dot">y</span>n</h1>
-    <p class="hero-sub reveal">roblox scripter & developer. i make scripts, thats it. if it can be done i prob done it.</p>
+<div class="ui-meta">
+  <span class="ui-meta-item">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    120
+  </span>
+  <span class="ui-meta-sep">|</span>
+  <span class="ui-meta-item">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 12q.825 0 1.413-.587T14 10t-.587-1.412T12 8t-1.412.588T10 10t.588 1.413T12 12m0 10q-4.025-3.425-6.012-6.362T4 10.2q0-3.75 2.413-5.975T12 2t5.588 2.225T20 10.2q0 2.5-1.987 5.438T12 22"/></svg>
+    SKY
+  </span>
+</div>
 
-    <div class="chips reveal">
-      <span class="chip">luau</span>
-      <span class="chip">roblox</span>
-      <span class="chip">aim.cfg</span>
-      <span class="chip">discord bots</span>
-      <span class="chip">scripts</span>
+<!-- ===== HOME: guns.lol profile ===== -->
+<section class="view view-home active" id="view-home">
+  <div class="profile-center">
+    <div class="profile-avatar">
+      <img id="avatar" src="https://r2.guns.lol/166a9d7b-1531-4f03-807c-792a510b48b5.jpg" alt="kyn">
     </div>
 
-    <div class="hero-actions reveal">
-      <a href="#projects" class="btn btn-primary">View Projects <span class="arr">→</span></a>
-      <a href="#profiles" class="btn btn-ghost">My Profiles</a>
+    <h1 class="profile-name">KYN</h1>
+
+    <div class="profile-verified" title="Verified">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="m8.6 22.5-1.9-3.2-3.6-.8.35-3.7L1 12l2.45-2.8-.35-3.7 3.6-.8 1.9-3.2L12 2.95l3.4-1.45 1.9 3.2 3.6.8-.35 3.7L23 12l-2.45 2.8.35 3.7-3.6.8-1.9 3.2-3.4-1.45-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45-4.25 4.25-2.15-2.1L7.4 12l3.55 3.55Z"/></svg>
     </div>
 
-    <div class="stats reveal">
-      <div class="stat"><b data-count="60" data-suffix="+">0</b><span>features</span></div>
-      <div class="divider"></div>
-      <div class="stat"><b data-count="9">0</b><span>executors</span></div>
-      <div class="divider"></div>
-      <div class="stat"><b data-count="3">0</b><span>projects</span></div>
-      <div class="divider"></div>
-      <div class="stat live"><b><i></i>live</b><span>active</span></div>
-    </div>
-  </section>
+    <p class="profile-typewriter" id="typewriter" aria-live="polite"></p>
 
-  <!-- projects -->
-  <section class="section" id="projects">
-    <div class="sec-label">// what i build</div>
-    <h2 class="sec-title">Projects</h2>
-    <div class="project-spotlight reveal">
-      <div class="project-spotlight-top">
-        <div class="project-spotlight-ico">+</div>
+    <div class="profile-socials">
+      <button class="social-btn" id="copy-discord" title="Copy Discord">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.5c1.6.4 2.4.9 3.5 1.6a13.6 13.6 0 0 0-10.4 0C9.4 4.4 10.3 4 11.8 3.5L11.6 3A19.8 19.8 0 0 0 6.7 4.4 20.7 20.7 0 0 0 3 18.6 19.9 19.9 0 0 0 9 21.5l.4-.7c-1-.3-1.8-.7-2.6-1.2l.6-.5a14.2 14.2 0 0 0 12.2 0l.6.5c-.8.5-1.7.9-2.6 1.2l.4.7a19.8 19.8 0 0 0 6-2.9 20.6 20.6 0 0 0-3.7-14.2ZM9.3 15.4c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.7 2-1.7 2Zm5.4 0c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.7 2-1.7 2Z"/></svg>
+      </button>
+      <a class="social-btn" href="https://steamcommunity.com/id/Binxix" target="_blank" rel="noopener" title="Steam">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8.21 17.32L7 16.8a2.13 2.13 0 1 0 1.17-2.93l1.28.53a1.58 1.58 0 0 1-1.22 2.92z"/><path d="M12 2a10 10 0 0 0-10 9.34l5.38 2.21a2.31 2.31 0 0 1 .47-.24A2.62 2.62 0 0 1 9 13.1l2.44-3.56a3.8 3.8 0 1 1 3.8 3.8h-.08l-3.51 2.5a2.77 2.77 0 0 1-5.47.68l-3.77-1.6A10 10 0 1 0 12 2z"/><path d="M17.79 9.5a2.53 2.53 0 1 0-2.53 2.5a2.54 2.54 0 0 0 2.53-2.5zm-4.42 0a1.9 1.9 0 1 1 1.9 1.91a1.9 1.9 0 0 1-1.9-1.92z"/></svg>
+      </a>
+      <a class="social-btn" href="https://open.spotify.com/user/31w2wcjfijhgqosegdupqx5fphbm?si=c4dc53783d294a54" target="_blank" rel="noopener" title="Spotify">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.01 2.019c-5.495 0-9.991 4.496-9.991 9.991c0 5.494 4.496 9.99 9.991 9.99c5.494 0 9.99-4.496 9.99-9.99c0-5.495-4.446-9.991-9.99-9.991zm4.595 14.436c-.199.299-.549.4-.85.201c-2.349-1.45-5.296-1.75-8.793-.951c-.348.102-.648-.148-.748-.449c-.101-.35.149-.648.45-.749c3.795-.85 7.093-.499 9.69 1.1c.35.149.4.548.251.848zm1.2-2.747c-.251.349-.7.499-1.051.249c-2.697-1.646-6.792-2.148-9.939-1.148c-.398.101-.85-.1-.949-.498c-.101-.402.1-.852.499-.952c3.646-1.098 8.143-.548 11.239 1.351c.3.149.45.648.201.998zm.099-2.799c-3.197-1.897-8.542-2.097-11.59-1.146a.938.938 0 0 1-1.148-.6a.937.937 0 0 1 .599-1.151c3.547-1.049 9.392-.85 13.089 1.351c.449.249.599.849.349 1.298c-.25.35-.849.498-1.299.248z"/></svg>
+      </a>
+    </div>
+
+    <div class="profile-cards">
+      <a class="pcard pcard-guns" href="https://guns.lol/kynvyr_" target="_blank" rel="noopener">
+        <div class="pcard-banner">
+          <video muted loop playsinline preload="metadata" poster="https://r2.guns.lol/166a9d7b-1531-4f03-807c-792a510b48b5.jpg">
+            <source src="https://r2.guns.lol/7d5d9cec-2268-4061-835d-c072f34be483.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="pcard-body">
+          <span class="pcard-tag">guns.lol</span>
+          <span class="pcard-title">@kynvyr_</span>
+          <span class="pcard-sub">verified profile</span>
+        </div>
+      </a>
+
+      <a class="pcard pcard-rs" href="https://rscripts.net/user/kyn" target="_blank" rel="noopener">
+        <div class="pcard-body pcard-body-full">
+          <span class="pcard-tag">rscripts</span>
+          <span class="pcard-title">@kyn</span>
+          <img class="pcard-embed" alt="kyn on Rscripts" loading="lazy" width="360" height="132" src="https://rscripts.net/api/embed/user/kyn?theme=dark">
+        </div>
+      </a>
+    </div>
+
+    <button class="btn-scripts" id="btn-scripts">My Scripts</button>
+  </div>
+</section>
+
+<!-- ===== SCRIPTS: aim.cfg + rscripts only ===== -->
+<section class="view view-scripts" id="view-scripts" hidden>
+  <button class="btn-back" id="btn-back">← back</button>
+
+  <div class="scripts-center">
+    <div class="script-panel">
+      <div class="script-head">
+        <span class="script-icon">+</span>
         <div>
-          <h3>aim.cfg</h3>
-          <p class="project-spotlight-tag">ex.cs:go.ex · roblox hub script</p>
+          <h2>aim.cfg</h2>
+          <p>ex.cs:go.ex · roblox hub script</p>
         </div>
-        <a class="btn btn-ghost" href="https://github.com/binx-ux/aim.cfg" target="_blank" rel="noopener">GitHub</a>
       </div>
-      <p class="project-spotlight-desc">a full-featured roblox hub with aimbot, ESP, hitbox expander, triggerbot, radar, and movement. works on arsenal and most other games.</p>
-    </div>
-  </section>
 
-  <!-- main panel: get script + latest updates -->
-  <section class="panel-wrap" id="get">
-    <div class="panel reveal">
-      <div class="panel-main">
-        <div class="panel-head">
-          <div class="logo-orb"><span>+</span></div>
-          <div>
-            <h2>aim.cfg</h2>
-            <div class="release">// latest release</div>
+      <div class="loaders">
+        <div class="loader">
+          <div class="loader-label"><span>PC</span> paste into any executor</div>
+          <div class="code">
+            <code id="pc-code">loadstring(game:HttpGet("https://raw.githubusercontent.com/binx-ux/aim.cfg/refs/heads/main/aim.cfg"))()</code>
+            <button class="copy" data-target="pc-code">copy</button>
           </div>
         </div>
-
-        <div class="feat-row">
-          <div class="feat">
-            <div class="feat-ico">◎</div>
-            <h3>Aimbot</h3>
-            <p>prediction, FOV, LOS, multi-target</p>
-          </div>
-          <div class="feat">
-            <div class="feat-ico">▣</div>
-            <h3>Full ESP</h3>
-            <p>boxes, chams, skeleton, tracers</p>
-          </div>
-          <div class="feat">
-            <div class="feat-ico">⚡</div>
-            <h3>Movement</h3>
-            <p>fly, noclip, bhop, speed, auto tp</p>
+        <div class="loader">
+          <div class="loader-label"><span class="warn">MOBILE</span> in testing, may not work</div>
+          <div class="code">
+            <code id="mb-code">loadstring(game:HttpGet("https://raw.githubusercontent.com/binx-ux/aim.cfg/refs/heads/main/aim.cfg.mobile"))()</code>
+            <button class="copy" data-target="mb-code">copy</button>
           </div>
         </div>
-
-        <div class="loaders">
-          <div class="loader">
-            <div class="loader-label"><span>PC</span> paste into any executor</div>
-            <div class="code">
-              <code id="pc-code">loadstring(game:HttpGet("https://raw.githubusercontent.com/binx-ux/aim.cfg/refs/heads/main/aim.cfg"))()</code>
-              <button class="copy" data-target="pc-code">copy</button>
-            </div>
-          </div>
-          <div class="loader">
-            <div class="loader-label"><span class="warn">MOBILE</span> in testing, may not work</div>
-            <div class="code">
-              <code id="mb-code">loadstring(game:HttpGet("https://raw.githubusercontent.com/binx-ux/aim.cfg/refs/heads/main/aim.cfg.mobile"))()</code>
-              <button class="copy" data-target="mb-code">copy</button>
-            </div>
-          </div>
-        </div>
-
       </div>
 
-      <aside class="panel-side">
-        <div class="side-head"><span class="spark">✦</span> Latest Updates</div>
-        <div class="updates" id="updates">
-          <div class="update added"><i></i>color picker for esp, crosshair, radar, fov</div>
-          <div class="update added"><i></i>3D box esp and corner brackets</div>
-          <div class="update added"><i></i>circular compass radar</div>
-          <div class="update changed"><i></i>aimbot no longer freezes movement while aiming</div>
-          <div class="update changed"><i></i>hitbox expander now skips teammates</div>
-          <div class="update added"><i></i>hitbox expander invisible mode</div>
-          <div class="update removed"><i></i>removed third person and waypoints</div>
-        </div>
-        <div class="side-foot">
-          <a href="changelog.html">view full changelog <span>→</span></a>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- features -->
-  <section class="section" id="features">
-    <div class="sec-label">// everything inside</div>
-    <h2 class="sec-title">Features</h2>
-    <div class="fgrid">
-      <div class="fcard reveal">
-        <div class="fcard-head"><span class="fcard-ico">◎</span><h3>Aimbot</h3></div>
-        <ul class="fcard-list">
-          <li>smooth camera aimbot, movement stays free while aiming</li>
-          <li>FOV circle: smooth, dots, or filled <span class="ftag">color picker</span></li>
-          <li>velocity prediction + line-of-sight checks</li>
-          <li>hit part select (head / hrp / torso), hold or toggle</li>
-          <li>smart target validation: skips dead, ragdoll, underground</li>
-        </ul>
-      </div>
-
-      <div class="fcard reveal">
-        <div class="fcard-head"><span class="fcard-ico">⊹</span><h3>Triggerbot</h3></div>
-        <ul class="fcard-list">
-          <li>auto-fires when your aim is on an enemy</li>
-          <li>adjustable fire delay and trigger FOV</li>
-          <li>works off mouse target or the aimbot lock</li>
-        </ul>
-      </div>
-
-      <div class="fcard reveal">
-        <div class="fcard-head"><span class="fcard-ico">⛶</span><h3>Hitbox Expander <span class="ftag new">new</span></h3></div>
-        <ul class="fcard-list">
-          <li>expands enemy hitboxes for easier hits</li>
-          <li>team check, skips your own teammates</li>
-          <li>size slider + invisible mode with transparency</li>
-        </ul>
-      </div>
-
-      <div class="fcard reveal wide">
-        <div class="fcard-head"><span class="fcard-ico">▣</span><h3>ESP</h3></div>
-        <ul class="fcard-list cols">
-          <li>corner or 3D bounding boxes</li>
-          <li>chams fill</li>
-          <li>names + equipped item</li>
-          <li>health bar (green → red gradient)</li>
-          <li>distance</li>
-          <li>tracers, 4 origins</li>
-          <li>skeleton (R6 + R15)</li>
-          <li>head dot</li>
-          <li>offscreen arrows</li>
-          <li>self ESP</li>
-          <li>8 color presets + picker</li>
-          <li>custom font + size</li>
-        </ul>
-      </div>
-
-      <div class="fcard reveal">
-        <div class="fcard-head"><span class="fcard-ico">✛</span><h3>Crosshair</h3></div>
-        <ul class="fcard-list">
-          <li>6 styles: cross, dot, circle, X, KV, sniper</li>
-          <li>size, gap, thickness, opacity</li>
-          <li>dynamic spread, rainbow, outline, center dot</li>
-        </ul>
-      </div>
-
-      <div class="fcard reveal">
-        <div class="fcard-head"><span class="fcard-ico">◴</span><h3>Radar</h3></div>
-        <ul class="fcard-list">
-          <li>circular compass radar (N / E / S / W)</li>
-          <li>enemy + team colors, health-tinted dots</li>
-          <li>range slider, off-radar edge arrows, names</li>
-        </ul>
-      </div>
-
-      <div class="fcard reveal">
-        <div class="fcard-head"><span class="fcard-ico">⚡</span><h3>Movement</h3></div>
-        <ul class="fcard-list">
-          <li>speed (walkspeed / cframe / velocity)</li>
-          <li>fly + shift boost, float, bunny hop</li>
-          <li>noclip, jump power</li>
-        </ul>
-      </div>
-
-      <div class="fcard reveal">
-        <div class="fcard-head"><span class="fcard-ico">✦</span><h3>World &amp; Combat</h3></div>
-        <ul class="fcard-list">
-          <li>fullbright, no fog, custom FOV</li>
-          <li>gun mods: fast reload, fire rate, auto</li>
-          <li>no spread, no recoil</li>
-        </ul>
-      </div>
-
-      <div class="fcard reveal">
-        <div class="fcard-head"><span class="fcard-ico">⚙</span><h3>Misc &amp; QoL</h3></div>
-        <ul class="fcard-list">
-          <li>anti-afk, auto rejoin, anti-fling</li>
-          <li>auto tp, server hop, chat spam / spy</li>
-          <li>watermark (fps / ping / time), panic key</li>
-          <li>custom keybinds + notification sounds</li>
-        </ul>
+      <div class="script-links">
+        <a href="https://github.com/binx-ux/aim.cfg" target="_blank" rel="noopener">GitHub</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="https://discord.gg/pjfPGmzbN7" target="_blank" rel="noopener">Discord</a>
       </div>
     </div>
-  </section>
 
-  <!-- games -->
-  <section class="section" id="games">
-    <div class="sec-label">// where it works</div>
-    <h2 class="sec-title">Supported Games</h2>
-    <div class="game-grid">
-      <div class="game-card reveal">
-        <div class="game-top">
-          <span class="game-ico">🎯</span>
-          <span class="game-mode in">Built-in</span>
+    <div class="script-panel script-panel-rs">
+      <div class="script-head">
+        <span class="script-icon">R</span>
+        <div>
+          <h2>Rscripts</h2>
+          <p>@kyn on rscripts.net</p>
         </div>
-        <h3>Arsenal</h3>
-        <p>full ESP, aimbot, triggerbot and everything else. the most supported game.</p>
-        <div class="game-status ok"><i></i>fully supported</div>
       </div>
-
-      <div class="game-card reveal">
-        <div class="game-top">
-          <span class="game-ico">🔫</span>
-          <span class="game-mode in">Built-in</span>
-        </div>
-        <h3>MiscGunTest-X</h3>
-        <p>aimbot and radar work. visuals are auto-disabled here because they crash the game.</p>
-        <div class="game-status warn"><i></i>visuals disabled</div>
-      </div>
-
-      <div class="game-card reveal">
-        <div class="game-top">
-          <span class="game-ico">∞</span>
-          <span class="game-mode ext">Semi-universal</span>
-        </div>
-        <h3>Everything else</h3>
-        <p>aimbot and ESP run on most other games out of the box. results can vary per game.</p>
-        <div class="game-status info"><i></i>works on most</div>
-      </div>
+      <a class="rs-embed" href="https://rscripts.net/user/kyn" target="_blank" rel="noopener">
+        <img alt="kyn on Rscripts" loading="lazy" width="360" height="132" src="https://rscripts.net/api/embed/user/kyn?theme=dark">
+      </a>
+      <a class="btn-open-rs" href="https://rscripts.net/user/kyn" target="_blank" rel="noopener">Open profile →</a>
     </div>
-  </section>
-
-  <!-- executors -->
-  <section class="section" id="executors">
-    <div class="sec-label">// compatibility</div>
-    <h2 class="sec-title">Supported Executors</h2>
-    <div class="exec-status-bar reveal">
-      <span class="live-dot"></span>
-      <span>live status via <a href="https://weao.xyz" target="_blank" rel="noopener">weao.xyz</a></span>
-      <span class="exec-updated" id="weao-updated"></span>
-    </div>
-    <div class="exec-grid">
-      <div class="exec reveal" data-weao="potassium"><span class="exec-name"><img class="exec-logo" src="assets/exec/potassium.png" alt="" onerror="this.remove()"><b>Potassium</b></span><span class="bar"><i style="--w:99%"></i></span><span class="exec-right"><span class="exec-stat">—</span><em>99%</em></span></div>
-      <div class="exec reveal" data-weao="wave"><span class="exec-name"><img class="exec-logo" src="assets/exec/wave.png" alt="" onerror="this.remove()"><b>Wave</b></span><span class="bar"><i style="--w:99%"></i></span><span class="exec-right"><span class="exec-stat">—</span><em>99%</em></span></div>
-      <div class="exec reveal" data-weao="seliware"><span class="exec-name"><img class="exec-logo" src="assets/exec/seliware.png" alt="" onerror="this.remove()"><b>Seliware</b></span><span class="bar"><i style="--w:99%"></i></span><span class="exec-right"><span class="exec-stat">—</span><em>99%</em></span></div>
-      <div class="exec reveal" data-weao="synapse z"><span class="exec-name"><img class="exec-logo" src="assets/exec/synapse-z.png" alt="" onerror="this.remove()"><b>Synapse Z</b></span><span class="bar"><i style="--w:99%"></i></span><span class="exec-right"><span class="exec-stat">—</span><em>99%</em></span></div>
-      <div class="exec reveal" data-weao="matcha"><span class="exec-name"><img class="exec-logo" src="assets/exec/matcha.png" alt="" onerror="this.remove()"><b>Matcha</b></span><span class="bar"><i style="--w:0%"></i></span><span class="exec-right"><span class="exec-stat">—</span><em>—</em></span></div>
-      <div class="exec reveal" data-weao="delta"><span class="exec-name"><img class="exec-logo" src="assets/exec/delta.png" alt="" onerror="this.remove()"><b>Delta</b></span><span class="bar"><i style="--w:96%"></i></span><span class="exec-right"><span class="exec-stat">—</span><em>96%</em></span></div>
-      <div class="exec reveal" data-weao="xeno"><span class="exec-name"><img class="exec-logo" src="assets/exec/xeno.png" alt="" onerror="this.remove()"><b>Xeno</b></span><span class="bar"><i style="--w:84%"></i></span><span class="exec-right"><span class="exec-stat">—</span><em>84%</em></span></div>
-      <div class="exec reveal"><span class="exec-name"><img class="exec-logo" src="assets/exec/ronix.png" alt="" onerror="this.remove()"><b>Ronix</b></span><span class="bar"><i style="--w:0%"></i></span><span class="exec-right"><span class="exec-stat na">—</span><em>—</em></span></div>
-      <div class="exec reveal dead"><span class="exec-name"><img class="exec-logo" src="assets/exec/solara.png" alt="" onerror="this.remove()"><b>Solara</b></span><span class="bar"><i style="--w:6%"></i></span><span class="exec-right"><span class="exec-stat blocked">blocked</span><em></em></span></div>
-    </div>
-  </section>
-
-  <!-- xeno download -->
-  <section class="section" id="xeno">
-    <div class="sec-label">// recommended executor</div>
-    <h2 class="sec-title">Download Xeno</h2>
-    <div class="xeno-card reveal">
-      <div class="xeno-glow"></div>
-      <div class="xeno-top">
-        <div class="xeno-orb">
-          <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="10" r="5"/><ellipse cx="12" cy="13" rx="10" ry="3.4" transform="rotate(-18 12 13)"/></svg>
-        </div>
-        <div class="xeno-head">
-          <h3>Xeno <span class="xeno-ver">1.3.55</span></h3>
-          <div class="xeno-rel">// mirror hosted on this site</div>
-          <p>free executor that runs aim.cfg. grab it straight from here, no ad pages to click through.</p>
-        </div>
-        <div class="xeno-size">
-          <b>85 MB</b>
-          <span>.exe / windows</span>
-        </div>
-      </div>
-
-      <div class="xeno-feats">
-        <div class="xf"><span class="xf-ico">⧉</span><div><b>Multi Attach</b><em>attach to multiple clients</em></div></div>
-        <div class="xf"><span class="xf-ico">⚡</span><div><b>Performance</b><em>runs scripts fast</em></div></div>
-        <div class="xf"><span class="xf-ico">◉</span><div><b>84% UNC</b><em>solid api coverage</em></div></div>
-      </div>
-
-      <div class="xeno-actions">
-        <a class="btn btn-primary big" href="https://github.com/binx-ux/aim.cfg/releases/download/xeno-v1.3.55/Xeno-v1.3.55.exe">
-          Download Xeno <span class="arr">↓</span>
-        </a>
-        <a class="btn btn-ghost" href="https://www.xeno.now/download" target="_blank" rel="noopener">Official site</a>
-        <a class="btn btn-ghost" href="https://discord.gg/xe-no" target="_blank" rel="noopener">Xeno Discord</a>
-      </div>
-
-      <p class="xeno-disc">xeno is third-party software, not made by kyn. antivirus and smartscreen may flag executors. download and use at your own risk.</p>
-    </div>
-  </section>
-
-  <!-- profiles -->
-  <section class="section" id="profiles">
-    <div class="sec-label">// find me online</div>
-    <h2 class="sec-title">Profiles</h2>
-
-    <div class="profile-grid">
-      <!-- guns.lol -->
-      <article class="gl-card reveal">
-        <div class="gl-banner">
-          <video class="gl-video" autoplay muted loop playsinline preload="metadata" poster="https://r2.guns.lol/166a9d7b-1531-4f03-807c-792a510b48b5.jpg">
-            <source src="https://r2.guns.lol/7d5d9cec-2268-4061-835d-c072f34be483.mp4" type="video/mp4">
-          </video>
-          <div class="gl-banner-fade"></div>
-          <div class="gl-badge">verified</div>
-        </div>
-        <div class="gl-body">
-          <div class="gl-avatar">
-            <img src="https://og.guns.lol/api/og?username=kynvyr_&background=https%3A%2F%2Fr2.guns.lol%2F166a9d7b-1531-4f03-807c-792a510b48b5.jpg" alt="kyn" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-            <span class="gl-avatar-fallback">k</span>
-          </div>
-          <div class="gl-name">
-            <h3>KYN</h3>
-            <div class="gl-handle">@kynvyr_</div>
-          </div>
-          <p class="gl-bio">Your hand finds my hand<br>two heartbeats learning one song,<br>quiet as warm rain.</p>
-          <div class="gl-meta">
-            <span><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg> profile views</span>
-            <span><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 12q.825 0 1.413-.587T14 10t-.587-1.412T12 8t-1.412.588T10 10t.588 1.413T12 12m0 10q-4.025-3.425-6.012-6.362T4 10.2q0-3.75 2.413-5.975T12 2t5.588 2.225T20 10.2q0 2.5-1.987 5.438T12 22"/></svg> SKY</span>
-          </div>
-          <div class="gl-socials">
-            <a class="gl-chip" href="https://discord.gg/pjfPGmzbN7" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.5c1.6.4 2.4.9 3.5 1.6a13.6 13.6 0 0 0-10.4 0C9.4 4.4 10.3 4 11.8 3.5L11.6 3A19.8 19.8 0 0 0 6.7 4.4 20.7 20.7 0 0 0 3 18.6 19.9 19.9 0 0 0 9 21.5l.4-.7c-1-.3-1.8-.7-2.6-1.2l.6-.5a14.2 14.2 0 0 0 12.2 0l.6.5c-.8.5-1.7.9-2.6 1.2l.4.7a19.8 19.8 0 0 0 6-2.9 20.6 20.6 0 0 0-3.7-14.2ZM9.3 15.4c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.7 2-1.7 2Zm5.4 0c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.7 2-1.7 2Z"/></svg>Discord</a>
-            <a class="gl-chip" href="https://steamcommunity.com/id/Binxix" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.21 17.32L7 16.8a2.13 2.13 0 1 0 1.17-2.93l1.28.53a1.58 1.58 0 0 1-1.22 2.92z"/><path d="M12 2a10 10 0 0 0-10 9.34l5.38 2.21a2.31 2.31 0 0 1 .47-.24A2.62 2.62 0 0 1 9 13.1l2.44-3.56a3.8 3.8 0 1 1 3.8 3.8h-.08l-3.51 2.5a2.77 2.77 0 0 1-5.47.68l-3.77-1.6A10 10 0 1 0 12 2z"/><path d="M17.79 9.5a2.53 2.53 0 1 0-2.53 2.5a2.54 2.54 0 0 0 2.53-2.5zm-4.42 0a1.9 1.9 0 1 1 1.9 1.91a1.9 1.9 0 0 1-1.9-1.92z"/></svg>Steam</a>
-            <a class="gl-chip" href="https://open.spotify.com/user/31w2wcjfijhgqosegdupqx5fphbm?si=c4dc53783d294a54" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.01 2.019c-5.495 0-9.991 4.496-9.991 9.991c0 5.494 4.496 9.99 9.991 9.99c5.494 0 9.99-4.496 9.99-9.99c0-5.495-4.446-9.991-9.99-9.991zm4.595 14.436c-.199.299-.549.4-.85.201c-2.349-1.45-5.296-1.75-8.793-.951c-.348.102-.648-.148-.748-.449c-.101-.35.149-.648.45-.749c3.795-.85 7.093-.499 9.69 1.1c.35.149.4.548.251.848zm1.2-2.747c-.251.349-.7.499-1.051.249c-2.697-1.646-6.792-2.148-9.939-1.148c-.398.101-.85-.1-.949-.498c-.101-.402.1-.852.499-.952c3.646-1.098 8.143-.548 11.239 1.351c.3.149.45.648.201.998zm.099-2.799c-3.197-1.897-8.542-2.097-11.59-1.146a.938.938 0 0 1-1.148-.6a.937.937 0 0 1 .599-1.151c3.547-1.049 9.392-.85 13.089 1.351c.449.249.599.849.349 1.298c-.25.35-.849.498-1.299.248z"/></svg>Spotify</a>
-            <a class="gl-chip" href="https://www.tiktok.com/@kynvyr" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.6V8.9a7.3 7.3 0 0 0 4.3 1.4V7.2a4.3 4.3 0 0 1-3.3-1.4z"/></svg>TikTok</a>
-            <a class="gl-chip" href="https://github.com/binx-ux" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.5 4.9.3.3.7.9.7 1.9v2.7c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>GitHub</a>
-          </div>
-          <a class="gl-cta gl-cta-purple" href="https://guns.lol/kynvyr_" target="_blank" rel="noopener">View on guns.lol <span>→</span></a>
-        </div>
-      </article>
-
-      <!-- rscripts -->
-      <article class="rs-card reveal">
-        <div class="rs-head">
-          <div class="rs-logo">R</div>
-          <div>
-            <h3>Rscripts</h3>
-            <p class="rs-handle">@kyn</p>
-          </div>
-        </div>
-        <p class="rs-desc">my scripts and releases on rscripts.net. check out what i've published and my profile stats.</p>
-        <a class="rs-embed" href="https://rscripts.net/user/kyn" target="_blank" rel="noopener">
-          <img alt="kyn on Rscripts" loading="lazy" width="360" height="132" src="https://rscripts.net/api/embed/user/kyn?theme=dark">
-        </a>
-        <a class="gl-cta" href="https://rscripts.net/user/kyn" target="_blank" rel="noopener">View on Rscripts <span>→</span></a>
-      </article>
-    </div>
-
-    <!-- guns.lol media -->
-    <div class="media-section reveal">
-      <div class="sec-label">// from guns.lol</div>
-      <h3 class="media-title">Media</h3>
-      <div class="media-grid">
-        <a class="media-card media-video" href="https://guns.lol/kynvyr_" target="_blank" rel="noopener">
-          <video autoplay muted loop playsinline preload="metadata" poster="https://r2.guns.lol/166a9d7b-1531-4f03-807c-792a510b48b5.jpg">
-            <source src="https://r2.guns.lol/7d5d9cec-2268-4061-835d-c072f34be483.mp4" type="video/mp4">
-          </video>
-          <div class="media-overlay">
-            <span class="media-tag">background</span>
-            <span class="media-name">profile video</span>
-          </div>
-        </a>
-        <a class="media-card media-audio" href="https://guns.lol/kynvyr_" target="_blank" rel="noopener">
-          <img src="https://r2.guns.lol/110d1688-e01b-4c90-bc47-c523102e826c.webp" alt="rain cover" loading="lazy">
-          <div class="media-overlay">
-            <span class="media-tag">audio</span>
-            <span class="media-name">rain</span>
-          </div>
-        </a>
-        <a class="media-card media-audio" href="https://guns.lol/kynvyr_" target="_blank" rel="noopener">
-          <img src="https://r2.guns.lol/bd6aa770-f5f7-49fd-9071-061bb403b0dd.webp" alt="BLUE cover" loading="lazy">
-          <div class="media-overlay">
-            <span class="media-tag">audio</span>
-            <span class="media-name">BLUE</span>
-          </div>
-        </a>
-        <a class="media-card media-audio" href="https://guns.lol/kynvyr_" target="_blank" rel="noopener">
-          <img src="https://r2.guns.lol/dc30d9cb-d0d3-43e2-bf0a-332ac8b7ef8b.webp" alt="UNDER cover" loading="lazy">
-          <div class="media-overlay">
-            <span class="media-tag">audio</span>
-            <span class="media-name">UNDER</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- footer -->
-  <footer class="footer">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <span class="brand-name">kyn</span>
-        <p>portfolio · roblox scripter</p>
-      </div>
-      <div class="foot-links">
-        <a href="https://discord.gg/pjfPGmzbN7" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.5c1.6.4 2.4.9 3.5 1.6a13.6 13.6 0 0 0-10.4 0C9.4 4.4 10.3 4 11.8 3.5L11.6 3A19.8 19.8 0 0 0 6.7 4.4 20.7 20.7 0 0 0 3 18.6 19.9 19.9 0 0 0 9 21.5l.4-.7c-1-.3-1.8-.7-2.6-1.2l.6-.5a14.2 14.2 0 0 0 12.2 0l.6.5c-.8.5-1.7.9-2.6 1.2l.4.7a19.8 19.8 0 0 0 6-2.9 20.6 20.6 0 0 0-3.7-14.2ZM9.3 15.4c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.7 2-1.7 2Zm5.4 0c-1 0-1.7-.9-1.7-2s.8-2 1.7-2 1.7.9 1.7 2-.7 2-1.7 2Z"/></svg>Discord</a>
-        <a href="https://github.com/binx-ux" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.5 4.9.3.3.7.9.7 1.9v2.7c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>GitHub</a>
-        <a href="https://rscripts.net/user/kyn" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5"/></svg>Rscripts</a>
-        <a href="https://guns.lol/kynvyr_" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>guns.lol</a>
-      </div>
-    </div>
-    <div class="foot-credits">
-      <span>silent aim original by Averiias, Stefanuk12, xaxa</span>
-      <span>for educational purposes only. use at your own risk.</span>
-    </div>
-  </footer>
-</main>
+  </div>
+</section>
 
 <div class="toast" id="toast">copied to clipboard</div>
 
